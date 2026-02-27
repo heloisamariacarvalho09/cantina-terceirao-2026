@@ -12,7 +12,6 @@
 --primary-dark:#1E40AF;
 --danger:#EF4444;
 --success:#10B981;
---warning:#F59E0B;
 --bg:#F1F5F9;
 --surface:#FFFFFF;
 --text:#0F172A;
@@ -120,9 +119,6 @@ margin-bottom:12px;
 border-left:5px solid var(--primary);
 }
 
-.vencido{color:var(--danger);font-weight:600;}
-.fiado{color:var(--warning);font-weight:600;}
-
 .footer{
 position:fixed;
 bottom:0;
@@ -156,7 +152,6 @@ color:var(--primary);
 </nav>
 </header>
 
-<!-- TELA VENDAS -->
 <div id="telaVendas">
 <div class="container">
 
@@ -180,23 +175,10 @@ color:var(--primary);
 <label>Produto</label>
 <select id="produto">
 <option value="0">Selecione...</option>
-<optgroup label="🥤 Bebidas">
 <option value="3.50">Refrigerante - R$3,50</option>
 <option value="2.00">Suco - R$2,00</option>
-</optgroup>
-<optgroup label="🍩 Doces">
 <option value="2.50">Freegells - R$2,50</option>
-<option value="0.75">Pirulito - R$0,75</option>
-<option value="0.50">Bala - R$0,50</option>
-</optgroup>
-<optgroup label="🍟 Salgados Fritos">
 <option value="6.00">Coxinha - R$6,00</option>
-<option value="6.00">Salsicha - R$6,00</option>
-</optgroup>
-<optgroup label="🥨 Industrializados">
-<option value="1.50">Pipoca - R$1,50</option>
-<option value="3.50">Fofura - R$3,50</option>
-</optgroup>
 </select>
 
 <label>Forma de Pagamento</label>
@@ -218,30 +200,12 @@ color:var(--primary);
 </div>
 </div>
 
-<!-- TELA RELATÓRIOS -->
 <div id="telaRelatorios" style="display:none;">
 <div class="container">
-
-<div class="card">
-<h2>📅 Total por Dia</h2>
-<div id="relatorioDias"></div>
-</div>
-
-<div class="card">
-<h2>🏫 Total por Sala</h2>
-<div id="relatorioSala"></div>
-</div>
-
-<div class="card">
-<h2>🏆 Ranking de Salas</h2>
-<div id="rankingSala"></div>
-</div>
-
 <div class="card">
 <h2>💰 Total Geral</h2>
 <div id="relatorioGeral"></div>
 </div>
-
 </div>
 </div>
 
@@ -264,8 +228,8 @@ if(tela=="relatorios") gerarRelatorio();
 }
 
 function registrarVenda(){
-let data=dataVenda.value;
-let nome=nome.value.trim();
+let data=document.getElementById("dataVenda").value;
+let nome=document.getElementById("nome").value.trim();
 let sala=document.getElementById("sala").value;
 let produto=document.getElementById("produto");
 let produtoNome=produto.options[produto.selectedIndex].text;
@@ -277,19 +241,16 @@ alert("Preencha nome, sala e produto!");
 return;
 }
 
-let vencimento=null;
-if(forma=="fiado"){
-let d=new Date(data);
-d.setDate(d.getDate()+14);
-vencimento=d.toISOString();
-}
+let venda={data,nome,sala,produto:produtoNome,valor,forma,pago:false};
 
-let venda={data,nome,sala,produto:produtoNome,valor,forma,vencimento,pago:false};
 let vendas=JSON.parse(localStorage.getItem("vendas")||"[]");
 vendas.push(venda);
 localStorage.setItem("vendas",JSON.stringify(vendas));
 
 document.getElementById("nome").value="";
+document.getElementById("sala").value="";
+document.getElementById("produto").value="0";
+
 carregar();
 }
 
@@ -297,12 +258,12 @@ function carregar(){
 let lista=document.getElementById("lista");
 lista.innerHTML="";
 let total=0;
-let dataSelecionada=dataVenda.value;
+let dataSelecionada=document.getElementById("dataVenda").value;
 let vendas=JSON.parse(localStorage.getItem("vendas")||"[]");
 
 vendas.forEach((v,i)=>{
 if(v.data==dataSelecionada){
-if(v.pago || v.forma!="fiado") total+=v.valor;
+total+=v.valor;
 
 lista.innerHTML+=`
 <div class="sale">
@@ -310,23 +271,15 @@ lista.innerHTML+=`
 <small>${v.produto}</small><br>
 <small>Pagamento: ${v.forma.toUpperCase()}</small><br>
 <strong>R$ ${v.valor.toFixed(2)}</strong>
-${v.forma=="fiado" && !v.pago ? `<br><button class="btn-success" onclick="marcarPago(${i})">Marcar como Pago</button>`:""}
 </div>`;
 }
 });
 
-totalDia.innerText="R$ "+total.toFixed(2);
-}
-
-function marcarPago(i){
-let vendas=JSON.parse(localStorage.getItem("vendas")||"[]");
-vendas[i].pago=true;
-localStorage.setItem("vendas",JSON.stringify(vendas));
-carregar();
+document.getElementById("totalDia").innerText="R$ "+total.toFixed(2);
 }
 
 function limparDia(){
-let dataSelecionada=dataVenda.value;
+let dataSelecionada=document.getElementById("dataVenda").value;
 if(confirm("Deseja limpar esse dia?")){
 let vendas=JSON.parse(localStorage.getItem("vendas")||"[]");
 vendas=vendas.filter(v=>v.data!=dataSelecionada);
@@ -337,41 +290,12 @@ carregar();
 
 function gerarRelatorio(){
 let vendas=JSON.parse(localStorage.getItem("vendas")||"[]");
-let dias={}, salas={}, totalGeral=0;
-
-vendas.forEach(v=>{
-if(v.pago || v.forma!="fiado"){
-if(!dias[v.data]) dias[v.data]=0;
-if(!salas[v.sala]) salas[v.sala]=0;
-dias[v.data]+=v.valor;
-salas[v.sala]+=v.valor;
-totalGeral+=v.valor;
-}
-});
-
-let htmlDias="";
-for(let d in dias){
-htmlDias+=`<div>${d} - R$ ${dias[d].toFixed(2)}</div>`;
+let total=0;
+vendas.forEach(v=> total+=v.valor);
+document.getElementById("relatorioGeral").innerHTML="<strong>R$ "+total.toFixed(2)+"</strong>";
 }
 
-let htmlSala="";
-for(let s in salas){
-htmlSala+=`<div>${s} - R$ ${salas[s].toFixed(2)}</div>`;
-}
-
-let ranking=Object.entries(salas).sort((a,b)=>b[1]-a[1]);
-let htmlRanking="";
-ranking.forEach((r,i)=>{
-htmlRanking+=`<div>${i+1}º ${r[0]} - R$ ${r[1].toFixed(2)}</div>`;
-});
-
-relatorioDias.innerHTML=htmlDias||"Nenhum registro.";
-relatorioSala.innerHTML=htmlSala||"Nenhum registro.";
-rankingSala.innerHTML=htmlRanking||"Nenhum registro.";
-relatorioGeral.innerHTML="<strong>R$ "+totalGeral.toFixed(2)+"</strong>";
-}
-
-dataVenda.addEventListener("change",carregar);
+document.getElementById("dataVenda").addEventListener("change",carregar);
 carregar();
 
 </script>
