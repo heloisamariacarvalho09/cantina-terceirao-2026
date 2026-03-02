@@ -86,6 +86,11 @@ border:2px solid #E2E8F0;
 font-size:14px;
 }
 
+.flex{
+display:flex;
+gap:8px;
+}
+
 button{
 padding:10px 14px;
 border:none;
@@ -98,12 +103,6 @@ font-weight:600;
 background:var(--primary);
 color:white;
 width:100%;
-}
-
-.btn-success{
-background:var(--success);
-color:white;
-margin-top:8px;
 }
 
 .btn-danger{
@@ -159,10 +158,18 @@ color:var(--primary);
 <h2>Nova Venda</h2>
 
 <label>Data</label>
+<div class="flex">
 <input type="date" id="dataVenda">
 
+<select id="periodo" style="max-width:150px;">
+<option value="Manhã">Manhã</option>
+<option value="Almoço">Almoço</option>
+<option value="Tarde">Tarde</option>
+</select>
+</div>
+
 <label>Cliente</label>
-<div style="display:flex; gap:8px;">
+<div class="flex">
 <input type="text" id="nome" placeholder="Nome do cliente">
 <select id="sala" style="max-width:100px;">
 <option value="">Sala</option>
@@ -200,15 +207,6 @@ color:var(--primary);
 </div>
 </div>
 
-<div id="telaRelatorios" style="display:none;">
-<div class="container">
-<div class="card">
-<h2>💰 Total Geral</h2>
-<div id="relatorioGeral"></div>
-</div>
-</div>
-</div>
-
 <div class="footer">
 <div class="total" id="totalDia">R$ 0,00</div>
 <button class="btn-danger" onclick="limparDia()">Limpar Dia</button>
@@ -219,16 +217,9 @@ color:var(--primary);
 document.getElementById("dataVenda").value =
 new Date().toISOString().split("T")[0];
 
-function mostrarTela(tela){
-document.getElementById("telaVendas").style.display = tela=="vendas"?"block":"none";
-document.getElementById("telaRelatorios").style.display = tela=="relatorios"?"block":"none";
-document.getElementById("btnVendas").classList.toggle("active",tela=="vendas");
-document.getElementById("btnRelatorios").classList.toggle("active",tela=="relatorios");
-if(tela=="relatorios") gerarRelatorio();
-}
-
 function registrarVenda(){
 let data=document.getElementById("dataVenda").value;
+let periodo=document.getElementById("periodo").value;
 let nome=document.getElementById("nome").value.trim();
 let sala=document.getElementById("sala").value;
 let produto=document.getElementById("produto");
@@ -241,7 +232,7 @@ alert("Preencha nome, sala e produto!");
 return;
 }
 
-let venda={data,nome,sala,produto:produtoNome,valor,forma,pago:false};
+let venda={data,periodo,nome,sala,produto:produtoNome,valor,forma};
 
 let vendas=JSON.parse(localStorage.getItem("vendas")||"[]");
 vendas.push(venda);
@@ -261,7 +252,7 @@ let total=0;
 let dataSelecionada=document.getElementById("dataVenda").value;
 let vendas=JSON.parse(localStorage.getItem("vendas")||"[]");
 
-vendas.forEach((v,i)=>{
+vendas.forEach((v)=>{
 if(v.data==dataSelecionada){
 total+=v.valor;
 
@@ -269,6 +260,7 @@ lista.innerHTML+=`
 <div class="sale">
 <strong>${v.nome} - ${v.sala}</strong><br>
 <small>${v.produto}</small><br>
+<small>Período: ${v.periodo}</small><br>
 <small>Pagamento: ${v.forma.toUpperCase()}</small><br>
 <strong>R$ ${v.valor.toFixed(2)}</strong>
 </div>`;
@@ -286,13 +278,6 @@ vendas=vendas.filter(v=>v.data!=dataSelecionada);
 localStorage.setItem("vendas",JSON.stringify(vendas));
 carregar();
 }
-}
-
-function gerarRelatorio(){
-let vendas=JSON.parse(localStorage.getItem("vendas")||"[]");
-let total=0;
-vendas.forEach(v=> total+=v.valor);
-document.getElementById("relatorioGeral").innerHTML="<strong>R$ "+total.toFixed(2)+"</strong>";
 }
 
 document.getElementById("dataVenda").addEventListener("change",carregar);
