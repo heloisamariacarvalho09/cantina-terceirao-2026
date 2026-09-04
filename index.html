@@ -1,324 +1,565 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cantina do Terceirão 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-:root{
---primary:#2563EB;
---primary-dark:#1E40AF;
---danger:#EF4444;
---success:#10B981;
---bg:#F1F5F9;
---surface:#FFFFFF;
---text:#0F172A;
---text-light:#64748B;
-}
+    <title>Cozinha da Deia</title>
 
-*{margin:0;padding:0;box-sizing:border-box;}
+    <style>
 
-body{
-font-family:'Inter',sans-serif;
-background:var(--bg);
-padding-bottom:120px;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-header{
-background:linear-gradient(135deg,var(--primary-dark),var(--primary));
-color:white;
-padding:25px 20px;
-border-radius:0 0 25px 25px;
-text-align:center;
-}
+        body {
+            background: #f8f8f8;
+            color: #333;
+        }
 
-nav{
-display:flex;
-justify-content:center;
-gap:10px;
-margin-top:15px;
-}
+        /* =========================
+           CABEÇALHO
+        ========================= */
 
-nav button{
-background:white;
-color:var(--primary);
-border:none;
-padding:8px 18px;
-border-radius:20px;
-font-weight:600;
-cursor:pointer;
-}
+        .hero {
+            height: 450px;
+            position: relative;
+            overflow: hidden;
 
-nav button.active{
-background:var(--primary);
-color:white;
-}
+            background: linear-gradient(
+                135deg,
+                #8b0000,
+                #b51220,
+                #d9363e,
+                #e85b63
+            );
 
-.container{
-max-width:650px;
-margin:20px auto;
-padding:15px;
-}
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
 
-.card{
-background:var(--surface);
-padding:20px;
-border-radius:18px;
-box-shadow:0 8px 20px rgba(0,0,0,0.05);
-margin-bottom:18px;
-}
+        /* Formas decorativas */
 
-label{
-font-size:14px;
-color:var(--text-light);
-display:block;
-margin-bottom:5px;
-}
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 700px;
+            height: 250px;
 
-input,select{
-width:100%;
-padding:12px;
-margin-bottom:12px;
-border-radius:12px;
-border:2px solid #E2E8F0;
-font-size:14px;
-}
+            background: rgba(255, 255, 255, 0.10);
 
-.flex{
-display:flex;
-gap:8px;
-}
+            border-radius: 50%;
+            top: 70px;
+            left: -150px;
 
-button{
-padding:10px 14px;
-border:none;
-border-radius:12px;
-cursor:pointer;
-font-weight:600;
-}
+            transform: rotate(20deg);
+        }
 
-.btn-primary{
-background:var(--primary);
-color:white;
-width:100%;
-}
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 800px;
+            height: 250px;
 
-.btn-danger{
-background:#FEE2E2;
-color:var(--danger);
-}
+            background: rgba(255, 255, 255, 0.08);
 
-.sale{
-background:#F8FAFC;
-padding:15px;
-border-radius:15px;
-margin-bottom:12px;
-border-left:5px solid var(--primary);
-}
+            border-radius: 50%;
+            right: -200px;
+            bottom: 20px;
 
-.footer{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-background:white;
-padding:18px;
-box-shadow:0 -6px 20px rgba(0,0,0,0.08);
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
+            transform: rotate(15deg);
+        }
 
-.total{
-font-size:18px;
-font-weight:700;
-color:var(--primary);
-}
-</style>
+        /* =========================
+           BOTÃO MENU
+        ========================= */
+
+        .menu-btn {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+
+            width: 50px;
+            height: 50px;
+
+            border: none;
+            border-radius: 10px;
+
+            background: rgba(255, 255, 255, 0.12);
+
+            color: white;
+
+            font-size: 28px;
+
+            cursor: pointer;
+
+            z-index: 100;
+
+            transition: 0.3s;
+        }
+
+        .menu-btn:hover {
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        /* =========================
+           MENU LATERAL
+        ========================= */
+
+        .menu {
+            position: fixed;
+
+            top: 0;
+            left: -280px;
+
+            width: 280px;
+            height: 100vh;
+
+            background: white;
+
+            box-shadow: 5px 0 20px rgba(0, 0, 0, 0.2);
+
+            z-index: 200;
+
+            transition: 0.3s;
+
+            padding-top: 80px;
+        }
+
+        .menu.ativo {
+            left: 0;
+        }
+
+        .menu h2 {
+            text-align: center;
+
+            color: #a30d18;
+
+            margin-bottom: 30px;
+        }
+
+        .menu a {
+            display: block;
+
+            padding: 18px 30px;
+
+            color: #444;
+
+            text-decoration: none;
+
+            font-size: 17px;
+
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            background: #fbe5e7;
+
+            color: #a30d18;
+
+            padding-left: 38px;
+        }
+
+        .fechar {
+            position: absolute;
+
+            top: 18px;
+            right: 20px;
+
+            border: none;
+
+            background: none;
+
+            font-size: 25px;
+
+            color: #a30d18;
+
+            cursor: pointer;
+        }
+
+        /* =========================
+           CONTEÚDO DO HERO
+        ========================= */
+
+        .hero-content {
+            position: relative;
+            z-index: 5;
+
+            max-width: 900px;
+
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+
+            font-weight: 700;
+
+            margin-bottom: 35px;
+        }
+
+        .hero p {
+            font-size: 21px;
+
+            line-height: 1.7;
+
+            margin-bottom: 5px;
+        }
+
+        /* =========================
+           CONTEÚDO
+        ========================= */
+
+        .conteudo {
+            max-width: 1100px;
+
+            margin: 70px auto;
+
+            padding: 0 25px;
+        }
+
+        .card {
+            background: white;
+
+            border-radius: 25px;
+
+            padding: 45px;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.08);
+
+            text-align: center;
+        }
+
+        .card h2 {
+            color: #a30d18;
+
+            font-size: 32px;
+
+            margin-bottom: 20px;
+        }
+
+        .card p {
+            font-size: 18px;
+
+            line-height: 1.7;
+
+            color: #666;
+        }
+
+        /* =========================
+           CARDÁPIO
+        ========================= */
+
+        #cardapio {
+            margin-top: 40px;
+        }
+
+        .cardapio-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 25px;
+
+            margin-top: 30px;
+        }
+
+        .produto {
+            background: #fff;
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.08);
+
+            transition: 0.3s;
+        }
+
+        .produto:hover {
+            transform: translateY(-5px);
+        }
+
+        .produto h3 {
+            color: #a30d18;
+
+            margin-bottom: 10px;
+        }
+
+        .produto p {
+            font-size: 15px;
+
+            margin-bottom: 15px;
+        }
+
+        .preco {
+            font-size: 20px;
+
+            font-weight: bold;
+
+            color: #b51220;
+        }
+
+        /* =========================
+           RESPONSIVO
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .hero {
+                height: 430px;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .card {
+                padding: 30px 20px;
+            }
+
+        }
+
+    </style>
+
 </head>
 
 <body>
 
-<header>
-<h1>Cantina do Terceirão 2026</h1>
-<p>Controle de Vendas</p>
 
-<nav>
-<button onclick="mostrarTela('vendas')" id="btnVendas" class="active">Vendas</button>
-<button onclick="mostrarTela('relatorios')" id="btnRelatorios">Relatórios</button>
-</nav>
-</header>
+    <!-- =========================
+         MENU
+    ========================= -->
 
-<div id="telaVendas">
-<div class="container">
+    <div class="menu" id="menu">
 
-<div class="card">
-<h2>Nova Venda</h2>
+        <button class="fechar" onclick="fecharMenu()">
+            ✕
+        </button>
 
-<label>Data</label>
-<div class="flex">
-<input type="date" id="dataVenda">
+        <h2>Cozinha da Deia</h2>
 
-<select id="periodo" style="max-width:150px;">
-<option value="Manhã">Manhã</option>
-<option value="Almoço">Almoço</option>
-<option value="Tarde">Tarde</option>
-</select>
-</div>
+        <a href="#inicio" onclick="fecharMenu()">
+            🏠 Início
+        </a>
 
-<label>Cliente</label>
-<div class="flex">
-<input type="text" id="nome" placeholder="Nome do cliente">
-<select id="sala" style="max-width:100px;">
-<option value="">Sala</option>
-<option>1W</option><option>1X</option><option>1Y</option>
-<option>2W</option><option>2X</option><option>2Y</option>
-<option>3W</option><option>3X</option><option>3Y</option>
-</select>
-</div>
+        <a href="#cardapio" onclick="fecharMenu()">
+            📋 Cardápio
+        </a>
 
-<label>Produto</label>
-<select id="produto">
-<option value="0">Selecione...</option>
+        <a href="#sobre" onclick="fecharMenu()">
+            ❤️ Sobre nós
+        </a>
 
-<option value="0">Bebidas</option>
-<option value="3.50">Refrigerante - R$3,50</option>
-<option value="2.00">Suco - R$2,00</option>
-<br>
-<br>
-<option value="0">Balas</option>
-<option value="2.50">Freegells - R$2,50</option>
-<option value="1.00">Ciclete - R$1,00</option>  
-<option value="0.50">Bala 7Belo - R$0,50</option>
-<option value="1.00">Pirulito - R$1,00</option> 
-<br>
-<br>
-<option value="0">Doces</option>
-<option value="3.00">Trufa - R$3,00</option>  
-<option value="1.00">Paçoca - R$1,00</option>
-<option value="2.50">Moranguete - R$2,50</option>  
-<option value="1.00">Geladinho - R$1,00</option>
-<br> 
-<br>
-<option value="0">Salgadinhos</option>
-<option value="3.50">Salgado Fofura - R$3,50</option>
-<option value="1.50">Pipoca Vovozinha - R$1,50</option>  
-<br>
-<br>
-<option value="0">Salgados</option>
-<option value="7.50">Salgado Menor - R$7,50</option>
-<option value="9.00">Salgado Medio - R$9,00</option>
-<option value="12.00">Salgado Grande - R$12,00</option>
-  
-  
-</select>
+        <a href="#contato" onclick="fecharMenu()">
+            📞 Contato
+        </a>
 
-<label>Forma de Pagamento</label>
-<select id="forma">
-<option value="avista">Dinheiro</option>
-<option value="pix">Pix</option>
-<option value="cartao">Cartão</option>
-<option value="fiado">Fiado (14 dias)</option>
-</select>
+    </div>
 
-<button class="btn-primary" onclick="registrarVenda()">Registrar Venda</button>
-</div>
 
-<div class="card">
-<h2>Vendas do Dia</h2>
-<div id="lista"></div>
-</div>
+    <!-- =========================
+         HERO
+    ========================= -->
 
-</div>
-</div>
+    <header class="hero" id="inicio">
 
-<div class="footer">
-<div class="total" id="totalDia">R$ 0,00</div>
-<button class="btn-danger" onclick="limparDia()">Limpar Dia</button>
-</div>
+        <button class="menu-btn" onclick="abrirMenu()">
+            ☰
+        </button>
 
-<script>
 
-document.getElementById("dataVenda").value =
-new Date().toISOString().split("T")[0];
+        <div class="hero-content">
 
-function registrarVenda(){
-let data=document.getElementById("dataVenda").value;
-let periodo=document.getElementById("periodo").value;
-let nome=document.getElementById("nome").value.trim();
-let sala=document.getElementById("sala").value;
-let produto=document.getElementById("produto");
-let produtoNome=produto.options[produto.selectedIndex].text;
-let valor=parseFloat(produto.value);
-let forma=document.getElementById("forma").value;
+            <h1>
+                Cozinha da Deia
+            </h1>
 
-if(!nome || !sala || valor==0){
-alert("Preencha nome, sala e produto!");
-return;
-}
+            <p>
+                Sabor caseiro feito com carinho.
+            </p>
 
-let venda={data,periodo,nome,sala,produto:produtoNome,valor,forma};
+            <p>
+                Comida gostosa para deixar seu dia ainda melhor.
+            </p>
 
-let vendas=JSON.parse(localStorage.getItem("vendas")||"[]");
-vendas.push(venda);
-localStorage.setItem("vendas",JSON.stringify(vendas));
+        </div>
 
-document.getElementById("nome").value="";
-document.getElementById("sala").value="";
-document.getElementById("produto").value="0";
+    </header>
 
-carregar();
-}
 
-function carregar(){
-let lista=document.getElementById("lista");
-lista.innerHTML="";
-let total=0;
-let dataSelecionada=document.getElementById("dataVenda").value;
-let vendas=JSON.parse(localStorage.getItem("vendas")||"[]");
+    <!-- =========================
+         SOBRE
+    ========================= -->
 
-vendas.forEach((v)=>{
-if(v.data==dataSelecionada){
-total+=v.valor;
+    <main class="conteudo">
 
-lista.innerHTML+=`
-<div class="sale">
-<strong>${v.nome} - ${v.sala}</strong><br>
-<small>${v.produto}</small><br>
-<small>Período: ${v.periodo}</small><br>
-<small>Pagamento: ${v.forma.toUpperCase()}</small><br>
-<strong>R$ ${v.valor.toFixed(2)}</strong>
-</div>`;
-}
-});
+        <section class="card" id="sobre">
 
-document.getElementById("totalDia").innerText="R$ "+total.toFixed(2);
-}
+            <h2>
+                Bem-vindo à Cozinha da Deia ❤️
+            </h2>
 
-function limparDia(){
-let dataSelecionada=document.getElementById("dataVenda").value;
-if(confirm("Deseja limpar esse dia?")){
-let vendas=JSON.parse(localStorage.getItem("vendas")||"[]");
-vendas=vendas.filter(v=>v.data!=dataSelecionada);
-localStorage.setItem("vendas",JSON.stringify(vendas));
-carregar();
-}
-}
+            <p>
+                Aqui você encontra comidas preparadas com muito
+                carinho, sabor e aquele gostinho especial de comida
+                caseira.
+            </p>
 
-document.getElementById("dataVenda").addEventListener("change",carregar);
-carregar();
+        </section>
 
-</script>
+
+        <!-- =========================
+             CARDÁPIO
+        ========================= -->
+
+        <section class="card" id="cardapio">
+
+            <h2>
+                🍽️ Nosso Cardápio
+            </h2>
+
+            <p>
+                Confira algumas das opções da Cozinha da Deia.
+            </p>
+
+
+            <div class="cardapio-grid">
+
+                <div class="produto">
+
+                    <h3>
+                        Prato do Dia
+                    </h3>
+
+                    <p>
+                        Uma deliciosa opção de comida caseira.
+                    </p>
+
+                    <span class="preco">
+                        R$ 20,00
+                    </span>
+
+                </div>
+
+
+                <div class="produto">
+
+                    <h3>
+                        Marmita
+                    </h3>
+
+                    <p>
+                        Comida fresquinha e preparada com carinho.
+                    </p>
+
+                    <span class="preco">
+                        R$ 18,00
+                    </span>
+
+                </div>
+
+
+                <div class="produto">
+
+                    <h3>
+                        Sobremesa
+                    </h3>
+
+                    <p>
+                        Uma sobremesa deliciosa para completar sua refeição.
+                    </p>
+
+                    <span class="preco">
+                        R$ 8,00
+                    </span>
+
+                </div>
+
+
+                <div class="produto">
+
+                    <h3>
+                        Especial da Deia
+                    </h3>
+
+                    <p>
+                        Uma opção especial da nossa cozinha.
+                    </p>
+
+                    <span class="preco">
+                        R$ 25,00
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONTATO
+        ========================= -->
+
+        <section class="card" id="contato" style="margin-top: 40px;">
+
+            <h2>
+                📞 Entre em contato
+            </h2>
+
+            <p>
+                Faça seu pedido e venha experimentar
+                os sabores da Cozinha da Deia!
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        function abrirMenu() {
+
+            document
+                .getElementById("menu")
+                .classList
+                .add("ativo");
+
+        }
+
+
+        function fecharMenu() {
+
+            document
+                .getElementById("menu")
+                .classList
+                .remove("ativo");
+
+        }
+
+    </script>
+
 
 </body>
+
 </html>
-
-
-
-
-
-
-
-
