@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -53,6 +54,7 @@
 
         .hero::before {
             content: "";
+
             position: absolute;
 
             width: 500px;
@@ -68,6 +70,7 @@
 
         .hero::after {
             content: "";
+
             position: absolute;
 
             width: 350px;
@@ -103,6 +106,7 @@
             opacity: 0.9;
         }
 
+
         /* =========================
            BOTÃO MENU
         ========================= */
@@ -136,6 +140,7 @@
         .menu-btn:hover {
             transform: scale(1.05);
         }
+
 
         /* =========================
            MENU LATERAL
@@ -188,8 +193,9 @@
             color: #a90016;
         }
 
+
         /* =========================
-           FUNDO DO MENU
+           OVERLAY
         ========================= */
 
         .overlay {
@@ -212,6 +218,7 @@
             visibility: visible;
         }
 
+
         /* =========================
            CONTAINER
         ========================= */
@@ -219,9 +226,9 @@
         .container {
             width: 90%;
             max-width: 1100px;
-
             margin: auto;
         }
+
 
         /* =========================
            CARDÁPIO
@@ -249,6 +256,7 @@
             margin-bottom: 45px;
         }
 
+
         /* =========================
            CATEGORIAS
         ========================= */
@@ -265,8 +273,9 @@
             padding-left: 12px;
         }
 
+
         /* =========================
-           GRID
+           CARDS
         ========================= */
 
         .cards {
@@ -276,10 +285,6 @@
 
             gap: 25px;
         }
-
-        /* =========================
-           CARD
-        ========================= */
 
         .card {
             background: white;
@@ -295,6 +300,7 @@
             transition: 0.3s;
 
             display: flex;
+
             flex-direction: column;
         }
 
@@ -356,6 +362,8 @@
             font-weight: bold;
 
             transition: 0.3s;
+
+            -webkit-tap-highlight-color: transparent;
         }
 
         .btn-pedir:hover {
@@ -363,6 +371,11 @@
 
             background: #7f0000;
         }
+
+        .btn-pedir:active {
+            transform: scale(0.98);
+        }
+
 
         /* =========================
            CONTATO
@@ -385,30 +398,42 @@
         }
 
         .contato p {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
 
             color: #555;
 
             font-size: 1.05rem;
         }
 
-        .whatsapp-contato {
-            display: inline-block;
 
-            margin-top: 20px;
+        /* =========================
+           INSTAGRAM
+        ========================= */
 
-            background: #a90016;
+        .instagram-link {
+            display: inline-flex;
 
-            color: white;
+            align-items: center;
 
-            padding: 14px 25px;
+            justify-content: center;
 
-            border-radius: 10px;
+            gap: 8px;
 
             text-decoration: none;
 
+            color: #a90016;
+
+            font-size: 1.1rem;
+
             font-weight: bold;
+
+            transition: 0.3s;
         }
+
+        .instagram-link:hover {
+            transform: scale(1.05);
+        }
+
 
         /* =========================
            BOTÃO CARRINHO
@@ -441,6 +466,8 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.25);
 
             transition: 0.3s;
+
+            -webkit-tap-highlight-color: transparent;
         }
 
         .carrinho-btn:hover {
@@ -448,6 +475,7 @@
 
             background: #7f0000;
         }
+
 
         /* =========================
            CARRINHO
@@ -473,12 +501,18 @@
             transition: 0.35s;
 
             display: flex;
+
             flex-direction: column;
         }
 
         .carrinho.ativo {
             right: 0;
         }
+
+
+        /* =========================
+           CABEÇALHO CARRINHO
+        ========================= */
 
         .carrinho-header {
             background: #a90016;
@@ -505,10 +539,54 @@
 
             color: white;
 
-            font-size: 28px;
+            font-size: 32px;
 
             cursor: pointer;
+
+            padding: 5px 10px;
+
+            -webkit-tap-highlight-color: transparent;
         }
+
+
+        /* =========================
+           CONTINUAR COMPRANDO
+        ========================= */
+
+        .continuar-comprando {
+            width: calc(100% - 40px);
+
+            margin: 15px 20px 0;
+
+            padding: 12px;
+
+            border: 2px solid #a90016;
+
+            border-radius: 10px;
+
+            background: white;
+
+            color: #a90016;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .continuar-comprando:hover {
+            background: #fff0f0;
+        }
+
+
+        /* =========================
+           ITENS DO CARRINHO
+        ========================= */
 
         .itens-carrinho {
             padding: 20px;
@@ -516,6 +594,8 @@
             flex: 1;
 
             overflow-y: auto;
+
+            -webkit-overflow-scrolling: touch;
         }
 
         .item-carrinho {
@@ -531,6 +611,8 @@
 
             justify-content: space-between;
 
+            align-items: flex-start;
+
             gap: 10px;
 
             margin-bottom: 10px;
@@ -540,12 +622,16 @@
             font-weight: bold;
 
             color: #444;
+
+            line-height: 1.4;
         }
 
         .item-preco {
             color: #a90016;
 
             font-weight: bold;
+
+            white-space: nowrap;
         }
 
         .controles {
@@ -557,8 +643,8 @@
         }
 
         .controles button {
-            width: 30px;
-            height: 30px;
+            width: 32px;
+            height: 32px;
 
             border: none;
 
@@ -570,12 +656,23 @@
 
             cursor: pointer;
 
-            font-size: 18px;
+            font-size: 20px;
+
+            -webkit-tap-highlight-color: transparent;
         }
 
         .quantidade {
             font-weight: bold;
+
+            min-width: 20px;
+
+            text-align: center;
         }
+
+
+        /* =========================
+           TOTAL
+        ========================= */
 
         .total {
             padding: 20px;
@@ -588,6 +685,11 @@
 
             color: #a90016;
         }
+
+
+        /* =========================
+           DADOS DO PEDIDO
+        ========================= */
 
         .dados-pedido {
             padding: 0 20px 20px;
@@ -641,14 +743,17 @@
             cursor: pointer;
 
             transition: 0.3s;
+
+            -webkit-tap-highlight-color: transparent;
         }
 
         .finalizar:hover {
             background: #7f0000;
         }
 
+
         /* =========================
-           VAZIO
+           CARRINHO VAZIO
         ========================= */
 
         .carrinho-vazio {
@@ -657,7 +762,10 @@
             color: #888;
 
             padding: 50px 10px;
+
+            line-height: 1.5;
         }
+
 
         /* =========================
            RODAPÉ
@@ -670,8 +778,33 @@
 
             text-align: center;
 
-            padding: 25px;
+            padding: 30px 20px;
         }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        .instagram-footer {
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            display: inline-block;
+
+            margin-top: 5px;
+
+            transition: 0.3s;
+        }
+
+        .instagram-footer:hover {
+            opacity: 0.8;
+
+            transform: scale(1.05);
+        }
+
 
         /* =========================
            RESPONSIVO
@@ -697,8 +830,14 @@
 
             .carrinho {
                 width: 100%;
+
                 max-width: 100%;
+
                 right: -100%;
+            }
+
+            .carrinho.ativo {
+                right: 0;
             }
 
             .categoria {
@@ -708,21 +847,53 @@
             .cardapio,
             .contato {
                 padding-left: 10px;
+
                 padding-right: 10px;
+            }
+
+            .carrinho-btn {
+                right: 15px;
+
+                bottom: 15px;
+
+                padding: 14px 18px;
+
+                font-size: 0.95rem;
+            }
+
+            .continuar-comprando {
+                padding: 14px;
+
+                font-size: 16px;
+            }
+
+            .item-topo {
+                align-items: flex-start;
+            }
+
+            .item-nome {
+                max-width: 65%;
             }
 
         }
 
     </style>
+
 </head>
 
+
 <body>
+
 
     <!-- =========================
          BOTÃO MENU
     ========================= -->
 
-    <button class="menu-btn" onclick="abrirMenu()">
+    <button
+        class="menu-btn"
+        onclick="abrirMenu()"
+        aria-label="Abrir menu"
+    >
         ☰
     </button>
 
@@ -731,30 +902,62 @@
          MENU LATERAL
     ========================= -->
 
-    <div class="menu" id="menu">
+    <div
+        class="menu"
+        id="menu"
+    >
 
-        <a href="#inicio" onclick="fecharMenu()">Início</a>
+        <a
+            href="#inicio"
+            onclick="fecharMenu()"
+        >
+            🏠 Início
+        </a>
 
-        <a href="#cardapio" onclick="fecharMenu()">Cardápio</a>
+        <a
+            href="#cardapio"
+            onclick="fecharMenu()"
+        >
+            🍽️ Cardápio
+        </a>
 
-        <a href="#contato" onclick="fecharMenu()">Contato</a>
+        <a
+            href="#contato"
+            onclick="fecharMenu()"
+        >
+            📸 Instagram
+        </a>
 
     </div>
 
-    <div class="overlay" id="overlay"></div>
+
+    <!-- FUNDO ESCURO -->
+
+    <div
+        class="overlay"
+        id="overlay"
+        onclick="fecharMenu()"
+    ></div>
 
 
     <!-- =========================
-         HERO
+         INÍCIO
     ========================= -->
 
-    <section class="hero" id="inicio">
+    <section
+        class="hero"
+        id="inicio"
+    >
 
         <div class="hero-content">
 
-            <h1>Cozinha da Deia</h1>
+            <h1>
+                Cozinha da Deia
+            </h1>
 
-            <p>Sabor caseiro feito com carinho.</p>
+            <p>
+                Sabor caseiro feito com carinho.
+            </p>
 
             <p class="subtitulo">
                 Comida gostosa para deixar seu dia ainda melhor.
@@ -769,7 +972,10 @@
          CARDÁPIO
     ========================= -->
 
-    <section class="cardapio" id="cardapio">
+    <section
+        class="cardapio"
+        id="cardapio"
+    >
 
         <div class="container">
 
@@ -778,7 +984,7 @@
             </h2>
 
             <p class="subtitulo-secao">
-                Escolha seu lanche e adicione ao pedido!
+                Escolha seus produtos e adicione ao pedido!
             </p>
 
 
@@ -790,13 +996,17 @@
                 🌭 Lanches de Linguiça
             </h3>
 
+
             <div class="cards">
 
-                <!-- TRADICIONAL -->
+
+                <!-- LINGUIÇA TRADICIONAL -->
 
                 <div class="card">
 
-                    <h3>Tradicional</h3>
+                    <h3>
+                        Tradicional
+                    </h3>
 
                     <p>
                         Linguiça + vinagrete.
@@ -816,11 +1026,13 @@
                 </div>
 
 
-                <!-- SALADA -->
+                <!-- LINGUIÇA SALADA -->
 
                 <div class="card">
 
-                    <h3>Salada</h3>
+                    <h3>
+                        Salada
+                    </h3>
 
                     <p>
                         Linguiça + vinagrete + alface ou rúcula.
@@ -840,11 +1052,13 @@
                 </div>
 
 
-                <!-- QUEIJO -->
+                <!-- LINGUIÇA QUEIJO -->
 
                 <div class="card">
 
-                    <h3>Queijo</h3>
+                    <h3>
+                        Queijo
+                    </h3>
 
                     <p>
                         Linguiça + vinagrete + alface ou rúcula + queijo.
@@ -864,11 +1078,13 @@
                 </div>
 
 
-                <!-- COMPLETO -->
+                <!-- LINGUIÇA COMPLETO -->
 
                 <div class="card">
 
-                    <h3>Completo</h3>
+                    <h3>
+                        Completo
+                    </h3>
 
                     <p>
                         Linguiça + vinagrete + alface ou rúcula +
@@ -899,13 +1115,17 @@
                 🥖 Lanches de Pernil
             </h3>
 
+
             <div class="cards">
 
-                <!-- TRADICIONAL -->
+
+                <!-- PERNIL TRADICIONAL -->
 
                 <div class="card">
 
-                    <h3>Tradicional</h3>
+                    <h3>
+                        Tradicional
+                    </h3>
 
                     <p>
                         Pernil + vinagrete.
@@ -925,11 +1145,13 @@
                 </div>
 
 
-                <!-- SALADA -->
+                <!-- PERNIL SALADA -->
 
                 <div class="card">
 
-                    <h3>Salada</h3>
+                    <h3>
+                        Salada
+                    </h3>
 
                     <p>
                         Pernil + vinagrete + alface ou rúcula.
@@ -949,11 +1171,13 @@
                 </div>
 
 
-                <!-- QUEIJO -->
+                <!-- PERNIL QUEIJO -->
 
                 <div class="card">
 
-                    <h3>Queijo</h3>
+                    <h3>
+                        Queijo
+                    </h3>
 
                     <p>
                         Pernil + vinagrete + alface ou rúcula + queijo.
@@ -973,11 +1197,13 @@
                 </div>
 
 
-                <!-- COMPLETO -->
+                <!-- PERNIL COMPLETO -->
 
                 <div class="card">
 
-                    <h3>Completo</h3>
+                    <h3>
+                        Completo
+                    </h3>
 
                     <p>
                         Pernil + vinagrete + alface ou rúcula +
@@ -1008,7 +1234,9 @@
                 🍽️ Outros
             </h3>
 
+
             <div class="cards">
+
 
                 <!-- MOELA -->
 
@@ -1019,7 +1247,7 @@
                     </h3>
 
                     <p>
-                        500 gramas
+                        500 gramas.
                     </p>
 
                     <div class="preco">
@@ -1045,7 +1273,7 @@
                     </h3>
 
                     <p>
-                        500 gramas
+                        500 gramas.
                     </p>
 
                     <div class="preco">
@@ -1071,7 +1299,7 @@
                     </h3>
 
                     <p>
-                        600 gramas + 300 gramas de arroz
+                        600 gramas + 300 gramas de arroz.
                     </p>
 
                     <div class="preco">
@@ -1095,32 +1323,31 @@
 
 
     <!-- =========================
-         CONTATO
+         INSTAGRAM / COZINHA DA DEIA
     ========================= -->
 
-    <section class="contato" id="contato">
+    <section
+        class="contato"
+        id="contato"
+    >
 
         <div class="container">
 
             <h2>
-                Faça seu pedido!
+                Cozinha da Deia
             </h2>
 
             <p>
-                Escolha seus produtos no cardápio e envie seu pedido
-                diretamente pelo WhatsApp.
-            </p>
-
-            <p>
-                📱 (19) 99282-7251
+                📸 Siga a gente no Instagram
             </p>
 
             <a
-                class="whatsapp-contato"
-                href="https://wa.me/5519992817251"
+                class="instagram-link"
+                href="https://www.instagram.com/cozinha.deia/"
                 target="_blank"
+                rel="noopener noreferrer"
             >
-                💬 Falar pelo WhatsApp
+                📷 @cozinha.deia
             </a>
 
         </div>
@@ -1129,15 +1356,17 @@
 
 
     <!-- =========================
-         BOTÃO CARRINHO
+         BOTÃO DO PEDIDO
     ========================= -->
 
     <button
         class="carrinho-btn"
         onclick="abrirCarrinho()"
     >
+
         🛒 Pedido
         (<span id="quantidadeTotal">0</span>)
+
     </button>
 
 
@@ -1145,7 +1374,13 @@
          CARRINHO
     ========================= -->
 
-    <div class="carrinho" id="carrinho">
+    <div
+        class="carrinho"
+        id="carrinho"
+    >
+
+
+        <!-- CABEÇALHO -->
 
         <div class="carrinho-header">
 
@@ -1156,6 +1391,7 @@
             <button
                 class="fechar-carrinho"
                 onclick="fecharCarrinho()"
+                aria-label="Fechar carrinho"
             >
                 ×
             </button>
@@ -1163,17 +1399,32 @@
         </div>
 
 
+        <!-- CONTINUAR COMPRANDO -->
+
+        <button
+            class="continuar-comprando"
+            onclick="fecharCarrinho()"
+        >
+            ← Continuar comprando
+        </button>
+
+
+        <!-- PRODUTOS -->
+
         <div
             class="itens-carrinho"
             id="itensCarrinho"
-        >
-        </div>
+        ></div>
 
+
+        <!-- TOTAL -->
 
         <div class="total">
 
             Total:
+
             R$
+
             <span id="totalPedido">
                 0,00
             </span>
@@ -1181,18 +1432,23 @@
         </div>
 
 
+        <!-- DADOS -->
+
         <div class="dados-pedido">
 
             <input
                 type="text"
                 id="nomeCliente"
                 placeholder="Seu nome"
+                autocomplete="name"
             >
+
 
             <textarea
                 id="observacao"
                 placeholder="Observação do pedido (opcional)"
             ></textarea>
+
 
             <button
                 class="finalizar"
@@ -1213,8 +1469,17 @@
     <footer>
 
         <p>
-            Obrigada pela preferência!
+            Obrigada pela preferência! ❤️
         </p>
+
+        <a
+            class="instagram-footer"
+            href="https://www.instagram.com/cozinha.deia/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            📸 Instagram: @cozinha.deia
+        </a>
 
     </footer>
 
@@ -1226,28 +1491,30 @@
     <script>
 
         /* =========================
-           WHATSAPP
+           NÚMERO DO WHATSAPP
         ========================= */
 
-        const numeroWhatsApp = "5519992817251";
+        const numeroWhatsApp =
+            "5519992817251";
 
 
         /* =========================
-           PEDIDO
+           LISTA DO PEDIDO
         ========================= */
 
         let pedido = [];
 
 
         /* =========================
-           ADICIONAR PEDIDO
+           ADICIONAR PRODUTO
         ========================= */
 
         function adicionarPedido(nome, preco) {
 
-            const itemExistente = pedido.find(
-                item => item.nome === nome
-            );
+            const itemExistente =
+                pedido.find(
+                    item => item.nome === nome
+                );
 
 
             if (itemExistente) {
@@ -1257,9 +1524,13 @@
             } else {
 
                 pedido.push({
+
                     nome: nome,
+
                     preco: preco,
+
                     quantidade: 1
+
                 });
 
             }
@@ -1267,7 +1538,71 @@
 
             atualizarCarrinho();
 
-            abrirCarrinho();
+
+            /* =========================
+               AVISO DE PRODUTO ADICIONADO
+            ========================= */
+
+            const mensagem =
+                document.createElement("div");
+
+
+            mensagem.textContent =
+                "✅ " + nome + " adicionado ao pedido!";
+
+
+            mensagem.style.position =
+                "fixed";
+
+            mensagem.style.bottom =
+                "90px";
+
+            mensagem.style.left =
+                "50%";
+
+            mensagem.style.transform =
+                "translateX(-50%)";
+
+            mensagem.style.background =
+                "#a90016";
+
+            mensagem.style.color =
+                "white";
+
+            mensagem.style.padding =
+                "12px 20px";
+
+            mensagem.style.borderRadius =
+                "10px";
+
+            mensagem.style.zIndex =
+                "2000";
+
+            mensagem.style.fontWeight =
+                "bold";
+
+            mensagem.style.boxShadow =
+                "0 4px 15px rgba(0,0,0,0.2)";
+
+            mensagem.style.textAlign =
+                "center";
+
+            mensagem.style.maxWidth =
+                "90%";
+
+
+            document.body.appendChild(
+                mensagem
+            );
+
+
+            setTimeout(() => {
+
+                if (mensagem.parentNode) {
+                    mensagem.remove();
+                }
+
+            }, 1800);
 
         }
 
@@ -1277,6 +1612,10 @@
         ========================= */
 
         function aumentarQuantidade(index) {
+
+            if (!pedido[index]) {
+                return;
+            }
 
             pedido[index].quantidade++;
 
@@ -1291,13 +1630,21 @@
 
         function diminuirQuantidade(index) {
 
+            if (!pedido[index]) {
+                return;
+            }
+
             pedido[index].quantidade--;
 
-            if (pedido[index].quantidade <= 0) {
+
+            if (
+                pedido[index].quantidade <= 0
+            ) {
 
                 pedido.splice(index, 1);
 
             }
+
 
             atualizarCarrinho();
 
@@ -1311,93 +1658,137 @@
         function atualizarCarrinho() {
 
             const container =
-                document.getElementById("itensCarrinho");
+                document.getElementById(
+                    "itensCarrinho"
+                );
+
 
             const quantidadeTotal =
-                document.getElementById("quantidadeTotal");
+                document.getElementById(
+                    "quantidadeTotal"
+                );
+
 
             const totalPedido =
-                document.getElementById("totalPedido");
+                document.getElementById(
+                    "totalPedido"
+                );
 
 
             container.innerHTML = "";
 
 
+            /* =========================
+               CARRINHO VAZIO
+            ========================= */
+
             if (pedido.length === 0) {
 
                 container.innerHTML = `
+
                     <div class="carrinho-vazio">
+
                         🛒 Seu pedido está vazio.
+
                         <br><br>
-                        Escolha alguma coisa deliciosa no cardápio!
+
+                        Escolha alguma coisa deliciosa
+                        no cardápio!
+
                     </div>
+
                 `;
 
             }
 
 
             let quantidade = 0;
+
             let total = 0;
 
 
-            pedido.forEach((item, index) => {
+            /* =========================
+               MOSTRAR PRODUTOS
+            ========================= */
 
-                quantidade += item.quantidade;
+            pedido.forEach(
+                (item, index) => {
 
-                total +=
-                    item.preco *
-                    item.quantidade;
-
-
-                const div =
-                    document.createElement("div");
-
-                div.className = "item-carrinho";
+                    quantidade +=
+                        item.quantidade;
 
 
-                div.innerHTML = `
-
-                    <div class="item-topo">
-
-                        <span class="item-nome">
-                            ${item.nome}
-                        </span>
-
-                        <span class="item-preco">
-                            R$ ${(item.preco * item.quantidade)
-                                .toFixed(2)
-                                .replace(".", ",")}
-                        </span>
-
-                    </div>
+                    total +=
+                        item.preco *
+                        item.quantidade;
 
 
-                    <div class="controles">
-
-                        <button
-                            onclick="diminuirQuantidade(${index})"
-                        >
-                            −
-                        </button>
-
-                        <span class="quantidade">
-                            ${item.quantidade}
-                        </span>
-
-                        <button
-                            onclick="aumentarQuantidade(${index})"
-                        >
-                            +
-                        </button>
-
-                    </div>
-
-                `;
+                    const div =
+                        document.createElement(
+                            "div"
+                        );
 
 
-                container.appendChild(div);
+                    div.className =
+                        "item-carrinho";
 
-            });
+
+                    const subtotal =
+                        item.preco *
+                        item.quantidade;
+
+
+                    div.innerHTML = `
+
+                        <div class="item-topo">
+
+                            <span class="item-nome">
+                                ${item.nome}
+                            </span>
+
+                            <span class="item-preco">
+                                R$
+                                ${subtotal
+                                    .toFixed(2)
+                                    .replace(".", ",")}
+                            </span>
+
+                        </div>
+
+
+                        <div class="controles">
+
+                            <button
+                                onclick="diminuirQuantidade(${index})"
+                                aria-label="Diminuir quantidade"
+                            >
+                                −
+                            </button>
+
+
+                            <span class="quantidade">
+                                ${item.quantidade}
+                            </span>
+
+
+                            <button
+                                onclick="aumentarQuantidade(${index})"
+                                aria-label="Aumentar quantidade"
+                            >
+                                +
+                            </button>
+
+                        </div>
+
+                    `;
+
+
+                    container.appendChild(
+                        div
+                    );
+
+                }
+            );
 
 
             quantidadeTotal.textContent =
@@ -1405,7 +1796,9 @@
 
 
             totalPedido.textContent =
-                total.toFixed(2).replace(".", ",");
+                total
+                    .toFixed(2)
+                    .replace(".", ",");
 
         }
 
@@ -1446,6 +1839,7 @@
                 .getElementById("menu")
                 .classList.add("ativo");
 
+
             document
                 .getElementById("overlay")
                 .classList.add("ativo");
@@ -1463,6 +1857,7 @@
                 .getElementById("menu")
                 .classList.remove("ativo");
 
+
             document
                 .getElementById("overlay")
                 .classList.remove("ativo");
@@ -1476,6 +1871,8 @@
 
         function finalizarPedido() {
 
+            /* PEDIDO VAZIO */
+
             if (pedido.length === 0) {
 
                 alert(
@@ -1487,19 +1884,29 @@
             }
 
 
+            /* NOME */
+
             const nome =
                 document
-                    .getElementById("nomeCliente")
+                    .getElementById(
+                        "nomeCliente"
+                    )
                     .value
                     .trim();
 
+
+            /* OBSERVAÇÃO */
 
             const observacao =
                 document
-                    .getElementById("observacao")
+                    .getElementById(
+                        "observacao"
+                    )
                     .value
                     .trim();
 
+
+            /* VERIFICAR NOME */
 
             if (nome === "") {
 
@@ -1507,9 +1914,13 @@
                     "Por favor, coloque seu nome antes de finalizar o pedido."
                 );
 
+
                 document
-                    .getElementById("nomeCliente")
+                    .getElementById(
+                        "nomeCliente"
+                    )
                     .focus();
+
 
                 return;
 
@@ -1518,6 +1929,10 @@
 
             let total = 0;
 
+
+            /* =========================
+               MENSAGEM WHATSAPP
+            ========================= */
 
             let mensagem =
                 "*PEDIDO - COZINHA DA DEIA*\n\n";
@@ -1533,29 +1948,33 @@
                 "*Itens do pedido:*\n";
 
 
-            pedido.forEach(item => {
+            pedido.forEach(
+                item => {
 
-                const subtotal =
-                    item.preco *
-                    item.quantidade;
-
-
-                total += subtotal;
+                    const subtotal =
+                        item.preco *
+                        item.quantidade;
 
 
-                mensagem +=
-                    "• " +
-                    item.nome +
-                    " x" +
-                    item.quantidade +
-                    " - R$ " +
-                    subtotal
-                        .toFixed(2)
-                        .replace(".", ",") +
-                    "\n";
+                    total += subtotal;
 
-            });
 
+                    mensagem +=
+                        "• " +
+                        item.nome +
+                        " x" +
+                        item.quantidade +
+                        " - R$ " +
+                        subtotal
+                            .toFixed(2)
+                            .replace(".", ",") +
+                        "\n";
+
+                }
+            );
+
+
+            /* TOTAL */
 
             mensagem +=
                 "\n*TOTAL: R$ " +
@@ -1564,6 +1983,8 @@
                     .replace(".", ",") +
                 "*";
 
+
+            /* OBSERVAÇÃO */
 
             if (observacao !== "") {
 
@@ -1578,17 +1999,26 @@
                 "\n\nPedido feito pelo site da Cozinha da Deia.";
 
 
+            /* =========================
+               LINK WHATSAPP
+            ========================= */
+
             const url =
                 "https://wa.me/" +
                 numeroWhatsApp +
                 "?text=" +
-                encodeURIComponent(mensagem);
+                encodeURIComponent(
+                    mensagem
+                );
 
 
-            window.open(
-                url,
-                "_blank"
-            );
+            /*
+             * No celular, usamos location.href
+             * para abrir o WhatsApp de forma
+             * mais confiável.
+             */
+
+            window.location.href = url;
 
         }
 
