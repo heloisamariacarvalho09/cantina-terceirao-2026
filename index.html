@@ -165,12 +165,6 @@
             left: 0;
         }
 
-        .menu h2 {
-            color: #a90016;
-            margin-bottom: 30px;
-            font-size: 1.7rem;
-        }
-
         .menu a {
             display: block;
 
@@ -230,39 +224,11 @@
         }
 
         /* =========================
-           SOBRE
-        ========================= */
-
-        .sobre {
-            padding: 70px 0 40px;
-
-            text-align: center;
-        }
-
-        .sobre h2 {
-            color: #a90016;
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .sobre p {
-            max-width: 750px;
-
-            margin: auto;
-
-            line-height: 1.7;
-
-            color: #555;
-
-            font-size: 1.05rem;
-        }
-
-        /* =========================
            CARDÁPIO
         ========================= */
 
         .cardapio {
-            padding: 50px 0 80px;
+            padding: 70px 0 80px;
         }
 
         .titulo-secao {
@@ -739,7 +705,6 @@
                 font-size: 1.5rem;
             }
 
-            .sobre,
             .cardapio,
             .contato {
                 padding-left: 10px;
@@ -768,16 +733,15 @@
 
     <div class="menu" id="menu">
 
+        <a href="#inicio" onclick="fecharMenu()">Início</a>
 
-        <a href="#inicio" onclick="fecharMenu()"> Início</a>
+        <a href="#cardapio" onclick="fecharMenu()">Cardápio</a>
 
-        <a href="#cardapio" onclick="fecharMenu()"> Cardápio</a>
-
-        <a href="#contato" onclick="fecharMenu()"> Contato</a>
+        <a href="#contato" onclick="fecharMenu()">Contato</a>
 
     </div>
 
-    <div class="overlay" id="overlay" onclick="fecharMenu()"></div>
+    <div class="overlay" id="overlay"></div>
 
 
     <!-- =========================
@@ -828,14 +792,11 @@
 
             <div class="cards">
 
-
-                <!-- LINGUIÇA TRADICIONAL -->
+                <!-- TRADICIONAL -->
 
                 <div class="card">
 
-                    <h3>
-                        Tradicional
-                    </h3>
+                    <h3>Tradicional</h3>
 
                     <p>
                         Linguiça + vinagrete.
@@ -847,10 +808,7 @@
 
                     <button
                         class="btn-pedir"
-                        onclick="adicionarPedido(
-                            'Tradicional',
-                            20
-                        )"
+                        onclick="adicionarPedido('Linguiça Tradicional', 20)"
                     >
                         🛒 Adicionar ao pedido
                     </button>
@@ -858,13 +816,11 @@
                 </div>
 
 
-                <!-- LINGUIÇA SALADA -->
+                <!-- SALADA -->
 
                 <div class="card">
 
-                    <h3>
-                        Salada
-                    </h3>
+                    <h3>Salada</h3>
 
                     <p>
                         Linguiça + vinagrete + alface ou rúcula.
@@ -876,10 +832,7 @@
 
                     <button
                         class="btn-pedir"
-                        onclick="adicionarPedido(
-                            'Salada',
-                            22
-                        )"
+                        onclick="adicionarPedido('Linguiça Salada', 22)"
                     >
                         🛒 Adicionar ao pedido
                     </button>
@@ -887,13 +840,11 @@
                 </div>
 
 
-                <!-- LINGUIÇA QUEIJO -->
+                <!-- QUEIJO -->
 
                 <div class="card">
 
-                    <h3>
-                        Queijo
-                    </h3>
+                    <h3>Queijo</h3>
 
                     <p>
                         Linguiça + vinagrete + alface ou rúcula + queijo.
@@ -905,10 +856,7 @@
 
                     <button
                         class="btn-pedir"
-                        onclick="adicionarPedido(
-                            'Queijo',
-                            26
-                        )"
+                        onclick="adicionarPedido('Linguiça com Queijo', 26)"
                     >
                         🛒 Adicionar ao pedido
                     </button>
@@ -916,13 +864,11 @@
                 </div>
 
 
-                <!-- LINGUIÇA COMPLETO -->
+                <!-- COMPLETO -->
 
                 <div class="card">
 
-                    <h3>
-                        Completo
-                    </h3>
+                    <h3>Completo</h3>
 
                     <p>
                         Linguiça + vinagrete + alface ou rúcula +
@@ -935,10 +881,7 @@
 
                     <button
                         class="btn-pedir"
-                        onclick="adicionarPedido(
-                            'Completo',
-                            30
-                        )"
+                        onclick="adicionarPedido('Linguiça Completo', 30)"
                     >
                         🛒 Adicionar ao pedido
                     </button>
@@ -958,14 +901,11 @@
 
             <div class="cards">
 
-
-                <!-- PERNIL TRADICIONAL -->
+                <!-- TRADICIONAL -->
 
                 <div class="card">
 
-                    <h3>
-                        Tradicional
-                    </h3>
+                    <h3>Tradicional</h3>
 
                     <p>
                         Pernil + vinagrete.
@@ -977,10 +917,7 @@
 
                     <button
                         class="btn-pedir"
-                        onclick="adicionarPedido(
-                            'Tradicional',
-                            20
-                        )"
+                        onclick="adicionarPedido('Pernil Tradicional', 20)"
                     >
                         🛒 Adicionar ao pedido
                     </button>
@@ -988,13 +925,11 @@
                 </div>
 
 
-                <!-- PERNIL SALADA -->
+                <!-- SALADA -->
 
                 <div class="card">
 
-                    <h3>
-                        Salada
-                    </h3>
+                    <h3>Salada</h3>
 
                     <p>
                         Pernil + vinagrete + alface ou rúcula.
@@ -1006,10 +941,7 @@
 
                     <button
                         class="btn-pedir"
-                        onclick="adicionarPedido(
-                            'Salada',
-                            22
-                        )"
+                        onclick="adicionarPedido('Pernil Salada', 22)"
                     >
                         🛒 Adicionar ao pedido
                     </button>
@@ -1017,13 +949,11 @@
                 </div>
 
 
-                <!-- PERNIL QUEIJO -->
+                <!-- QUEIJO -->
 
                 <div class="card">
 
-                    <h3>
-                     Queijo
-                    </h3>
+                    <h3>Queijo</h3>
 
                     <p>
                         Pernil + vinagrete + alface ou rúcula + queijo.
@@ -1035,10 +965,7 @@
 
                     <button
                         class="btn-pedir"
-                        onclick="adicionarPedido(
-                            'Queijo',
-                            26
-                        )"
+                        onclick="adicionarPedido('Pernil com Queijo', 26)"
                     >
                         🛒 Adicionar ao pedido
                     </button>
@@ -1046,13 +973,11 @@
                 </div>
 
 
-                <!-- PERNIL COMPLETO -->
+                <!-- COMPLETO -->
 
                 <div class="card">
 
-                    <h3>
-                        Completo
-                    </h3>
+                    <h3>Completo</h3>
 
                     <p>
                         Pernil + vinagrete + alface ou rúcula +
@@ -1065,10 +990,7 @@
 
                     <button
                         class="btn-pedir"
-                        onclick="adicionarPedido(
-                            'Completo',
-                            30
-                        )"
+                        onclick="adicionarPedido('Pernil Completo', 30)"
                     >
                         🛒 Adicionar ao pedido
                     </button>
@@ -1088,13 +1010,12 @@
 
             <div class="cards">
 
-
-                <!-- MARMITA -->
+                <!-- MOELA -->
 
                 <div class="card">
 
                     <h3>
-                        Marmita Moela 
+                        Marmita Moela
                     </h3>
 
                     <p>
@@ -1107,10 +1028,7 @@
 
                     <button
                         class="btn-pedir"
-                        onclick="adicionarPedido(
-                            'Marmita Moela',
-                            30
-                        )"
+                        onclick="adicionarPedido('Marmita Moela', 30)"
                     >
                         🛒 Adicionar ao pedido
                     </button>
@@ -1118,12 +1036,12 @@
                 </div>
 
 
-                <!-- SOBREMESA -->
+                <!-- SARAPATEL -->
 
                 <div class="card">
 
                     <h3>
-                        Marmita de Sarapatel 
+                        Marmita de Sarapatel
                     </h3>
 
                     <p>
@@ -1136,10 +1054,7 @@
 
                     <button
                         class="btn-pedir"
-                        onclick="adicionarPedido(
-                            'Marmita de Sarapatel',
-                            25
-                        )"
+                        onclick="adicionarPedido('Marmita de Sarapatel', 25)"
                     >
                         🛒 Adicionar ao pedido
                     </button>
@@ -1147,7 +1062,7 @@
                 </div>
 
 
-                <!-- ESPECIAL -->
+                <!-- DOBRADINHA -->
 
                 <div class="card">
 
@@ -1156,7 +1071,7 @@
                     </h3>
 
                     <p>
-                        600 gramas + 300 gramas de Arroz 
+                        600 gramas + 300 gramas de arroz
                     </p>
 
                     <div class="preco">
@@ -1165,10 +1080,7 @@
 
                     <button
                         class="btn-pedir"
-                        onclick="adicionarPedido(
-                            'Marmita de Dobradinha',
-                            30
-                        )"
+                        onclick="adicionarPedido('Marmita de Dobradinha', 30)"
                     >
                         🛒 Adicionar ao pedido
                     </button>
@@ -1234,7 +1146,6 @@
     ========================= -->
 
     <div class="carrinho" id="carrinho">
-
 
         <div class="carrinho-header">
 
@@ -1302,9 +1213,8 @@
     <footer>
 
         <p>
-            Obrigada pela preferência! 
+            Obrigada pela preferência!
         </p>
-
 
     </footer>
 
@@ -1363,7 +1273,7 @@
 
 
         /* =========================
-           AUMENTAR
+           AUMENTAR QUANTIDADE
         ========================= */
 
         function aumentarQuantidade(index) {
@@ -1376,7 +1286,7 @@
 
 
         /* =========================
-           DIMINUIR
+           DIMINUIR QUANTIDADE
         ========================= */
 
         function diminuirQuantidade(index) {
@@ -1536,7 +1446,6 @@
                 .getElementById("menu")
                 .classList.add("ativo");
 
-
             document
                 .getElementById("overlay")
                 .classList.add("ativo");
@@ -1553,7 +1462,6 @@
             document
                 .getElementById("menu")
                 .classList.remove("ativo");
-
 
             document
                 .getElementById("overlay")
@@ -1616,7 +1524,7 @@
 
 
             mensagem +=
-                " *Nome:* " +
+                "*Nome:* " +
                 nome +
                 "\n\n";
 
