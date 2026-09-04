@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -57,8 +58,6 @@
             color: white;
         }
 
-
-        /* Formas decorativas */
 
         .hero::before {
             content: "";
@@ -125,6 +124,7 @@
             transition: 0.3s;
         }
 
+
         .menu-btn:hover {
             background: rgba(255,255,255,0.25);
         }
@@ -154,9 +154,11 @@
             padding-top: 80px;
         }
 
+
         .menu.ativo {
             left: 0;
         }
+
 
         .menu h2 {
             text-align: center;
@@ -165,6 +167,7 @@
 
             margin-bottom: 30px;
         }
+
 
         .menu a {
             display: block;
@@ -179,6 +182,7 @@
 
             transition: 0.3s;
         }
+
 
         .menu a:hover {
             background: #fde8ea;
@@ -208,7 +212,7 @@
 
 
         /* =========================
-           FUNDO QUANDO MENU ABRE
+           OVERLAY
         ========================= */
 
         .overlay {
@@ -222,6 +226,7 @@
 
             display: none;
         }
+
 
         .overlay.ativo {
             display: block;
@@ -242,6 +247,7 @@
             padding: 20px;
         }
 
+
         .hero h1 {
             font-size: 64px;
 
@@ -249,6 +255,7 @@
 
             margin-bottom: 30px;
         }
+
 
         .hero p {
             font-size: 21px;
@@ -706,7 +713,7 @@
 
 
         /* =========================
-           FINALIZAR PEDIDO
+           WHATSAPP
         ========================= */
 
         .btn-whatsapp {
@@ -823,7 +830,9 @@
         <button
             class="fechar"
             onclick="fecharMenu()">
+
             ✕
+
         </button>
 
 
@@ -835,34 +844,44 @@
         <a
             href="#inicio"
             onclick="fecharMenu()">
+
             🏠 Início
+
         </a>
 
 
         <a
             href="#cardapio"
             onclick="fecharMenu()">
+
             📋 Cardápio
+
         </a>
 
 
         <a
             href="#sobre"
             onclick="fecharMenu()">
+
             ❤️ Sobre nós
+
         </a>
 
 
         <a
             href="#contato"
             onclick="fecharMenu()">
+
             📞 Contato
+
         </a>
 
     </div>
 
 
-    <!-- FUNDO DO MENU -->
+    <!-- =========================
+         OVERLAY
+    ========================= -->
 
     <div
         class="overlay"
@@ -919,7 +938,9 @@
     <main class="conteudo">
 
 
-        <!-- SOBRE -->
+        <!-- =========================
+             SOBRE
+        ========================= -->
 
         <section
             class="card"
@@ -970,18 +991,22 @@
                         🍛
                     </div>
 
+
                     <h3>
                         Prato do Dia
                     </h3>
+
 
                     <p>
                         Uma deliciosa opção de
                         comida caseira.
                     </p>
 
+
                     <span class="preco">
                         R$ 20,00
                     </span>
+
 
                     <button
                         class="btn-adicionar"
@@ -1006,18 +1031,22 @@
                         🍱
                     </div>
 
+
                     <h3>
                         Marmita
                     </h3>
+
 
                     <p>
                         Comida fresquinha e preparada
                         com carinho.
                     </p>
 
+
                     <span class="preco">
                         R$ 18,00
                     </span>
+
 
                     <button
                         class="btn-adicionar"
@@ -1042,18 +1071,22 @@
                         🍰
                     </div>
 
+
                     <h3>
                         Sobremesa
                     </h3>
+
 
                     <p>
                         Uma sobremesa deliciosa para
                         completar sua refeição.
                     </p>
 
+
                     <span class="preco">
                         R$ 8,00
                     </span>
+
 
                     <button
                         class="btn-adicionar"
@@ -1078,18 +1111,22 @@
                         🍲
                     </div>
 
+
                     <h3>
                         Especial da Deia
                     </h3>
+
 
                     <p>
                         Uma opção especial preparada
                         pela nossa cozinha.
                     </p>
 
+
                     <span class="preco">
                         R$ 25,00
                     </span>
+
 
                     <button
                         class="btn-adicionar"
@@ -1177,7 +1214,8 @@
         </div>
 
 
-        <!-- ITENS -->
+
+        <!-- LISTA DO PEDIDO -->
 
         <div id="listaPedido">
 
@@ -1204,6 +1242,7 @@
             <span>
                 Total:
             </span>
+
 
             <span id="totalPedido">
                 R$ 0,00
@@ -1237,8 +1276,8 @@
 
             <textarea
                 id="observacao"
-                placeholder="Ex: sem cebola, retirar algum ingrediente...">
-            </textarea>
+                placeholder="Ex: sem cebola, retirar algum ingrediente..."></textarea>
+
 
 
             <button
@@ -1261,12 +1300,11 @@
 
     <script>
 
-
         /* =========================
-           CONFIGURAÇÃO
+           NÚMERO DO WHATSAPP
         ========================= */
 
-        const numeroWhatsApp = "5519992827251";
+        const numeroWhatsApp = "5519992817251";
 
 
         /* =========================
@@ -1274,7 +1312,6 @@
         ========================= */
 
         let pedido = [];
-
 
 
         /* =========================
@@ -1384,6 +1421,8 @@
             let quantidade = 0;
 
 
+            /* CARRINHO VAZIO */
+
             if (pedido.length === 0) {
 
                 lista.innerHTML = `
@@ -1404,6 +1443,8 @@
 
             }
 
+
+            /* MOSTRA OS PRODUTOS */
 
             pedido.forEach(
                 (item, index) => {
@@ -1574,115 +1615,144 @@
 
         function finalizarPedido() {
 
-    // Verifica se existe algum produto
-    if (pedido.length === 0) {
+            /* VERIFICA SE TEM PRODUTO */
 
-        alert("Adicione pelo menos um produto ao pedido.");
+            if (pedido.length === 0) {
 
-        return;
-    }
+                alert(
+                    "Adicione pelo menos um produto ao pedido."
+                );
 
+                return;
 
-    // Pega o nome
-    const nome = document
-        .getElementById("nome")
-        .value
-        .trim();
+            }
 
 
-    // Pega a observação
-    const observacao = document
-        .getElementById("observacao")
-        .value
-        .trim();
+            /* PEGA O NOME */
+
+            const nome =
+                document
+                    .getElementById("nome")
+                    .value
+                    .trim();
 
 
-    // Verifica se colocou o nome
-    if (nome === "") {
+            /* PEGA A OBSERVAÇÃO */
 
-        alert("Digite seu nome antes de finalizar o pedido.");
-
-        return;
-    }
-
-
-    // Número da Cozinha da Deia
-    const numeroWhatsApp = "5519992827251";
+            const observacao =
+                document
+                    .getElementById("observacao")
+                    .value
+                    .trim();
 
 
-    // Começa a mensagem
-    let mensagem =
-        "🍴 PEDIDO - COZINHA DA DEIA\n\n";
+            /* VERIFICA O NOME */
+
+            if (nome === "") {
+
+                alert(
+                    "Digite seu nome antes de finalizar o pedido."
+                );
+
+                return;
+
+            }
 
 
-    mensagem +=
-        "👤 Nome: " + nome + "\n\n";
+            /* =========================
+               MONTA A MENSAGEM
+            ========================= */
+
+            let mensagem =
+                "🍴 *PEDIDO - COZINHA DA DEIA*%0A%0A";
 
 
-    mensagem +=
-        "🛒 Itens do pedido:\n";
+            mensagem +=
+                "👤 *Nome:* " +
+                nome +
+                "%0A%0A";
 
 
-    // Calcula o total
-    let total = 0;
+            mensagem +=
+                "🛒 *Itens do pedido:*%0A";
 
 
-    pedido.forEach(function(item) {
+            /* TOTAL */
 
-        const subtotal =
-            item.preco * item.quantidade;
-
-
-        total += subtotal;
+            let total = 0;
 
 
-        mensagem +=
-            "• " +
-            item.quantidade +
-            "x " +
-            item.nome +
-            " - R$ " +
-            subtotal
-                .toFixed(2)
-                .replace(".", ",") +
-            "\n";
+            pedido.forEach(function(item) {
 
-    });
+                const subtotal =
+                    item.preco *
+                    item.quantidade;
 
 
-    // Adiciona o total
-    mensagem +=
-        "\n💰 TOTAL: R$ " +
-        total
-            .toFixed(2)
-            .replace(".", ",");
+                total += subtotal;
 
 
-    // Adiciona observação, se existir
-    if (observacao !== "") {
+                mensagem +=
+                    "• " +
+                    item.quantidade +
+                    "x " +
+                    item.nome +
+                    " - R$ " +
+                    subtotal
+                        .toFixed(2)
+                        .replace(".", ",") +
+                    "%0A";
 
-        mensagem +=
-            "\n\n📝 Observação:\n" +
-            observacao;
-
-    }
-
-
-    // Cria o link do WhatsApp
-    const url =
-        "https://wa.me/" +
-        numeroWhatsApp +
-        "?text=" +
-        encodeURIComponent(mensagem);
+            });
 
 
-    // Abre o WhatsApp
-    window.open(url, "_blank");
+            /* TOTAL FINAL */
 
-}
+            mensagem +=
+                "%0A💰 *TOTAL: R$ " +
+                total
+                    .toFixed(2)
+                    .replace(".", ",") +
+                "*";
+
+
+            /* OBSERVAÇÃO */
+
+            if (observacao !== "") {
+
+                mensagem +=
+                    "%0A%0A📝 *Observação:*%0A" +
+                    observacao;
+
+            }
+
+
+            /* =========================
+               LINK DO WHATSAPP
+            ========================= */
+
+            const url =
+                "https://wa.me/" +
+                numeroWhatsApp +
+                "?text=" +
+                mensagem;
+
+
+            /* =========================
+               ABRIR WHATSAPP
+            ========================= */
+
+            window.open(
+                url,
+                "_blank"
+            );
+
+        }
+
     </script>
 
 
 </body>
 
 </html>
+```
