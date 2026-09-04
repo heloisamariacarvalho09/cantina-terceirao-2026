@@ -1574,132 +1574,112 @@
 
         function finalizarPedido() {
 
+    // Verifica se existe algum produto
+    if (pedido.length === 0) {
 
-            if (pedido.length === 0) {
+        alert("Adicione pelo menos um produto ao pedido.");
 
-                alert(
-                    "Adicione pelo menos um produto ao pedido."
-                );
-
-                return;
-
-            }
+        return;
+    }
 
 
-            const nome =
-                document
-                    .getElementById("nome")
-                    .value
-                    .trim();
+    // Pega o nome
+    const nome = document
+        .getElementById("nome")
+        .value
+        .trim();
 
 
-            const observacao =
-                document
-                    .getElementById("observacao")
-                    .value
-                    .trim();
+    // Pega a observação
+    const observacao = document
+        .getElementById("observacao")
+        .value
+        .trim();
 
 
-            if (nome === "") {
+    // Verifica se colocou o nome
+    if (nome === "") {
 
-                alert(
-                    "Digite seu nome antes de finalizar o pedido."
-                );
+        alert("Digite seu nome antes de finalizar o pedido.");
 
-                return;
-
-            }
+        return;
+    }
 
 
-            let mensagem =
-                "🍴 *PEDIDO - COZINHA DA DEIA*%0A%0A";
+    // Número da Cozinha da Deia
+    const numeroWhatsApp = "5519992827251";
 
 
-            mensagem +=
-                "👤 *Nome:* " +
-                nome +
-                "%0A%0A";
+    // Começa a mensagem
+    let mensagem =
+        "🍴 PEDIDO - COZINHA DA DEIA\n\n";
 
 
-            mensagem +=
-                "🛒 *Itens do pedido:*%0A";
+    mensagem +=
+        "👤 Nome: " + nome + "\n\n";
 
 
-            let total = 0;
+    mensagem +=
+        "🛒 Itens do pedido:\n";
 
 
-            pedido.forEach(item => {
-
-                const subtotal =
-                    item.preco *
-                    item.quantidade;
+    // Calcula o total
+    let total = 0;
 
 
-                total += subtotal;
+    pedido.forEach(function(item) {
+
+        const subtotal =
+            item.preco * item.quantidade;
 
 
-                mensagem +=
-                    "• " +
-                    item.quantidade +
-                    "x " +
-                    item.nome +
-                    " - R$ " +
-                    subtotal
-                        .toFixed(2)
-                        .replace(".", ",") +
-                    "%0A";
-
-            });
+        total += subtotal;
 
 
-            mensagem += "%0A";
+        mensagem +=
+            "• " +
+            item.quantidade +
+            "x " +
+            item.nome +
+            " - R$ " +
+            subtotal
+                .toFixed(2)
+                .replace(".", ",") +
+            "\n";
+
+    });
 
 
-            mensagem +=
-                "💰 *TOTAL: R$ " +
-                total
-                    .toFixed(2)
-                    .replace(".", ",") +
-                "*%0A";
+    // Adiciona o total
+    mensagem +=
+        "\n💰 TOTAL: R$ " +
+        total
+            .toFixed(2)
+            .replace(".", ",");
 
 
-            if (observacao !== "") {
+    // Adiciona observação, se existir
+    if (observacao !== "") {
 
-                mensagem +=
-                    "%0A📝 *Observação:*%0A" +
-                    observacao;
+        mensagem +=
+            "\n\n📝 Observação:\n" +
+            observacao;
 
-            }
-
-
-            if (
-                numeroWhatsApp ===
-                "5519992827251"
-            ) {
-
-                alert(
-                    "Configure o número do WhatsApp no código antes de finalizar o pedido."
-                );
-
-                return;
-
-            }
+    }
 
 
-            const url =
-                "https://wa.me/" +
-                numeroWhatsApp +
-                "?text=" +
-                mensagem;
+    // Cria o link do WhatsApp
+    const url =
+        "https://wa.me/" +
+        numeroWhatsApp +
+        "?text=" +
+        encodeURIComponent(mensagem);
 
 
-            window.open(
-                url,
-                "_blank"
-            );
+    // Abre o WhatsApp
+    window.open(url, "_blank");
 
-        }
-
+}
     </script>
 
 
