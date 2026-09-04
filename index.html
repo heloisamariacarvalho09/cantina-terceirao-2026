@@ -1,19 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Cozinha da Deia</title>
 
     <style>
-
-        /* =========================
-           RESET
-        ========================= */
 
         * {
             margin: 0;
@@ -27,10 +21,9 @@
         }
 
         body {
-            background: #f8f8f8;
+            background: #fff7f7;
             color: #333;
         }
-
 
         /* =========================
            HERO
@@ -38,97 +31,111 @@
 
         .hero {
             height: 450px;
-            position: relative;
-            overflow: hidden;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #7f0000,
-                    #a90016,
-                    #d32f3f,
-                    #e85d68
-                );
+            background: linear-gradient(
+                135deg,
+                #7f0000,
+                #a90016,
+                #d32f3f,
+                #e85d68
+            );
 
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
 
             text-align: center;
             color: white;
-        }
 
+            position: relative;
+            overflow: hidden;
+        }
 
         .hero::before {
             content: "";
             position: absolute;
 
-            width: 750px;
-            height: 270px;
-
-            background: rgba(255,255,255,0.10);
-
-            border-radius: 50%;
-
-            top: 55px;
-            left: -180px;
-
-            transform: rotate(20deg);
-        }
-
-
-        .hero::after {
-            content: "";
-            position: absolute;
-
-            width: 850px;
-            height: 280px;
+            width: 500px;
+            height: 500px;
 
             background: rgba(255,255,255,0.08);
 
             border-radius: 50%;
 
-            right: -250px;
-            bottom: 10px;
-
-            transform: rotate(15deg);
+            top: -250px;
+            right: -150px;
         }
 
+        .hero::after {
+            content: "";
+            position: absolute;
+
+            width: 350px;
+            height: 350px;
+
+            background: rgba(255,255,255,0.06);
+
+            border-radius: 50%;
+
+            bottom: -180px;
+            left: -100px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+
+        .hero .subtitulo {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
 
         /* =========================
            BOTÃO MENU
         ========================= */
 
         .menu-btn {
-            position: absolute;
+            position: fixed;
 
             top: 20px;
-            left: 10px;
+            left: 20px;
 
             width: 50px;
             height: 50px;
 
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
 
-            background: rgba(255,255,255,0.12);
+            background: white;
+            color: #a90016;
 
-            color: white;
-
-            font-size: 28px;
+            font-size: 27px;
 
             cursor: pointer;
 
-            z-index: 100;
+            z-index: 1001;
+
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 
             transition: 0.3s;
         }
 
-
         .menu-btn:hover {
-            background: rgba(255,255,255,0.25);
+            transform: scale(1.05);
         }
-
 
         /* =========================
            MENU LATERAL
@@ -138,81 +145,57 @@
             position: fixed;
 
             top: 0;
-            left: -290px;
+            left: -300px;
 
-            width: 290px;
+            width: 280px;
             height: 100vh;
 
             background: white;
 
-            box-shadow: 5px 0 25px rgba(0,0,0,0.2);
-
             z-index: 1000;
 
+            padding: 90px 25px 30px;
+
+            box-shadow: 5px 0 20px rgba(0,0,0,0.2);
+
             transition: 0.35s;
-
-            padding-top: 80px;
         }
-
 
         .menu.ativo {
             left: 0;
         }
 
-
         .menu h2 {
-            text-align: center;
-
             color: #a90016;
-
             margin-bottom: 30px;
+            font-size: 1.7rem;
         }
-
 
         .menu a {
             display: block;
 
-            padding: 18px 30px;
+            text-decoration: none;
 
             color: #444;
 
-            text-decoration: none;
+            padding: 15px 10px;
 
-            font-size: 17px;
+            margin-bottom: 8px;
+
+            border-radius: 10px;
 
             transition: 0.3s;
-        }
 
+            font-size: 1.05rem;
+        }
 
         .menu a:hover {
-            background: #fde8ea;
-
+            background: #ffe5e5;
             color: #a90016;
-
-            padding-left: 38px;
         }
-
-
-        .fechar {
-            position: absolute;
-
-            top: 18px;
-            right: 20px;
-
-            border: none;
-
-            background: none;
-
-            color: #a90016;
-
-            font-size: 25px;
-
-            cursor: pointer;
-        }
-
 
         /* =========================
-           OVERLAY
+           FUNDO DO MENU
         ========================= */
 
         .overlay {
@@ -220,235 +203,256 @@
 
             inset: 0;
 
-            background: rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.45);
 
-            z-index: 900;
+            z-index: 999;
 
-            display: none;
+            opacity: 0;
+            visibility: hidden;
+
+            transition: 0.3s;
         }
-
 
         .overlay.ativo {
-            display: block;
+            opacity: 1;
+            visibility: visible;
         }
-
 
         /* =========================
-           TEXTO DO HERO
+           CONTAINER
         ========================= */
 
-        .hero-content {
-            position: relative;
-
-            z-index: 5;
-
-            max-width: 900px;
-
-            padding: 20px;
-        }
-
-
-        .hero h1 {
-            font-size: 64px;
-
-            font-weight: 700;
-
-            margin-bottom: 30px;
-        }
-
-
-        .hero p {
-            font-size: 21px;
-
-            line-height: 1.7;
-        }
-
-
-        /* =========================
-           CONTEÚDO
-        ========================= */
-
-        .conteudo {
+        .container {
+            width: 90%;
             max-width: 1100px;
 
-            margin: 70px auto;
-
-            padding: 0 25px;
+            margin: auto;
         }
 
+        /* =========================
+           SOBRE
+        ========================= */
 
-        .card {
-            background: white;
-
-            border-radius: 25px;
-
-            padding: 45px;
-
-            box-shadow:
-                0 10px 30px rgba(0,0,0,0.08);
+        .sobre {
+            padding: 70px 0 40px;
 
             text-align: center;
         }
 
-
-        .card h2 {
+        .sobre h2 {
             color: #a90016;
-
-            font-size: 32px;
-
-            margin-bottom: 18px;
+            font-size: 2rem;
+            margin-bottom: 20px;
         }
 
+        .sobre p {
+            max-width: 750px;
 
-        .card > p {
-            font-size: 18px;
+            margin: auto;
 
             line-height: 1.7;
 
-            color: #666;
-        }
+            color: #555;
 
+            font-size: 1.05rem;
+        }
 
         /* =========================
            CARDÁPIO
         ========================= */
 
-        #cardapio {
-            margin-top: 40px;
+        .cardapio {
+            padding: 50px 0 80px;
         }
 
+        .titulo-secao {
+            text-align: center;
 
-        .cardapio-grid {
+            color: #a90016;
 
-            display: grid;
-
-            grid-template-columns:
-                repeat(auto-fit, minmax(220px, 1fr));
-
-            gap: 25px;
-
-            margin-top: 35px;
-        }
-
-
-        .produto {
-
-            background: white;
-
-            border-radius: 20px;
-
-            padding: 25px;
-
-            border: 1px solid #eee;
-
-            box-shadow:
-                0 8px 20px rgba(0,0,0,0.07);
-
-            transition: 0.3s;
-        }
-
-
-        .produto:hover {
-
-            transform: translateY(-5px);
-
-            box-shadow:
-                0 12px 25px rgba(0,0,0,0.12);
-        }
-
-
-        .produto .emoji {
-
-            font-size: 45px;
+            font-size: 2.2rem;
 
             margin-bottom: 15px;
         }
 
+        .subtitulo-secao {
+            text-align: center;
 
-        .produto h3 {
+            color: #777;
 
+            margin-bottom: 45px;
+        }
+
+        /* =========================
+           CATEGORIAS
+        ========================= */
+
+        .categoria {
             color: #a90016;
 
-            font-size: 21px;
+            font-size: 1.7rem;
+
+            margin: 35px 0 20px;
+
+            border-left: 5px solid #a90016;
+
+            padding-left: 12px;
+        }
+
+        /* =========================
+           GRID
+        ========================= */
+
+        .cards {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 25px;
+        }
+
+        /* =========================
+           CARD
+        ========================= */
+
+        .card {
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            box-shadow: 0 5px 20px rgba(100,0,0,0.1);
+
+            border: 1px solid #f2dada;
+
+            transition: 0.3s;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+
+            box-shadow: 0 10px 25px rgba(100,0,0,0.15);
+        }
+
+        .card h3 {
+            color: #8f0014;
+
+            font-size: 1.35rem;
 
             margin-bottom: 10px;
         }
 
-
-        .produto p {
-
+        .card p {
             color: #666;
-
-            font-size: 15px;
 
             line-height: 1.5;
 
             margin-bottom: 15px;
+
+            flex: 1;
         }
 
-
         .preco {
+            color: #a90016;
 
-            display: block;
-
-            font-size: 21px;
+            font-size: 1.4rem;
 
             font-weight: bold;
 
-            color: #a90016;
-
-            margin-bottom: 18px;
+            margin-bottom: 15px;
         }
 
-
-        /* =========================
-           BOTÃO ADICIONAR
-        ========================= */
-
-        .btn-adicionar {
-
+        .btn-pedir {
             width: 100%;
 
             border: none;
 
-            padding: 12px;
+            padding: 13px;
 
-            border-radius: 12px;
+            background: linear-gradient(
+                135deg,
+                #a90016,
+                #d32f3f
+            );
+
+            color: white;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            font-size: 1rem;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .btn-pedir:hover {
+            transform: scale(1.02);
+
+            background: #7f0000;
+        }
+
+        /* =========================
+           CONTATO
+        ========================= */
+
+        .contato {
+            padding: 70px 0;
+
+            background: #fff0f0;
+
+            text-align: center;
+        }
+
+        .contato h2 {
+            color: #a90016;
+
+            margin-bottom: 20px;
+
+            font-size: 2rem;
+        }
+
+        .contato p {
+            margin-bottom: 10px;
+
+            color: #555;
+
+            font-size: 1.05rem;
+        }
+
+        .whatsapp-contato {
+            display: inline-block;
+
+            margin-top: 20px;
 
             background: #a90016;
 
             color: white;
 
-            font-size: 16px;
+            padding: 14px 25px;
+
+            border-radius: 10px;
+
+            text-decoration: none;
 
             font-weight: bold;
-
-            cursor: pointer;
-
-            transition: 0.3s;
         }
-
-
-        .btn-adicionar:hover {
-
-            background: #7f0000;
-
-            transform: scale(1.02);
-        }
-
 
         /* =========================
            BOTÃO CARRINHO
         ========================= */
 
-        .carrinho-fixo {
-
+        .carrinho-btn {
             position: fixed;
 
-            right: 25px;
-            bottom: 25px;
-
-            z-index: 500;
+            right: 20px;
+            bottom: 20px;
 
             border: none;
 
@@ -460,153 +464,135 @@
 
             border-radius: 30px;
 
-            font-size: 16px;
+            font-size: 1rem;
 
             font-weight: bold;
 
             cursor: pointer;
 
-            box-shadow:
-                0 8px 25px rgba(0,0,0,0.25);
+            z-index: 900;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,0.25);
 
             transition: 0.3s;
         }
 
-
-        .carrinho-fixo:hover {
+        .carrinho-btn:hover {
+            transform: scale(1.05);
 
             background: #7f0000;
-
-            transform: translateY(-3px);
         }
-
 
         /* =========================
            CARRINHO
         ========================= */
 
         .carrinho {
-
             position: fixed;
 
             top: 0;
-            right: -450px;
+            right: -420px;
 
-            width: 420px;
-
+            width: 400px;
             max-width: 90%;
 
             height: 100vh;
 
             background: white;
 
-            z-index: 1200;
+            z-index: 1100;
 
-            box-shadow:
-                -5px 0 25px rgba(0,0,0,0.2);
+            box-shadow: -5px 0 25px rgba(0,0,0,0.2);
 
             transition: 0.35s;
 
-            padding: 30px;
-
-            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
         }
 
-
         .carrinho.ativo {
-
             right: 0;
         }
 
+        .carrinho-header {
+            background: #a90016;
 
-        .carrinho-topo {
+            color: white;
+
+            padding: 20px;
 
             display: flex;
 
-            justify-content: space-between;
-
             align-items: center;
 
-            margin-bottom: 25px;
+            justify-content: space-between;
         }
 
-
-        .carrinho-topo h2 {
-
-            color: #a90016;
+        .carrinho-header h2 {
+            font-size: 1.4rem;
         }
-
 
         .fechar-carrinho {
+            background: none;
 
             border: none;
 
-            background: none;
+            color: white;
 
-            font-size: 25px;
-
-            color: #a90016;
+            font-size: 28px;
 
             cursor: pointer;
         }
 
+        .itens-carrinho {
+            padding: 20px;
 
-        /* =========================
-           ITEM DO CARRINHO
-        ========================= */
+            flex: 1;
+
+            overflow-y: auto;
+        }
 
         .item-carrinho {
+            border-bottom: 1px solid #eee;
 
+            padding-bottom: 15px;
+
+            margin-bottom: 15px;
+        }
+
+        .item-topo {
             display: flex;
 
             justify-content: space-between;
 
-            align-items: center;
-
             gap: 10px;
 
-            padding: 15px 0;
-
-            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
         }
 
+        .item-nome {
+            font-weight: bold;
 
-        .item-info {
-
-            flex: 1;
+            color: #444;
         }
 
-
-        .item-info strong {
-
-            color: #333;
-        }
-
-
-        .item-info small {
-
-            display: block;
-
+        .item-preco {
             color: #a90016;
 
-            margin-top: 5px;
+            font-weight: bold;
         }
 
-
-        .quantidade {
-
+        .controles {
             display: flex;
 
             align-items: center;
 
-            gap: 8px;
+            gap: 10px;
         }
 
-
-        .quantidade button {
-
-            width: 28px;
-            height: 28px;
+        .controles button {
+            width: 30px;
+            height: 30px;
 
             border: none;
 
@@ -618,159 +604,108 @@
 
             cursor: pointer;
 
-            font-size: 17px;
+            font-size: 18px;
         }
 
-
-        .quantidade span {
-
-            min-width: 20px;
-
-            text-align: center;
-
+        .quantidade {
             font-weight: bold;
         }
 
-
-        /* =========================
-           TOTAL
-        ========================= */
-
         .total {
+            padding: 20px;
 
-            margin-top: 25px;
+            border-top: 1px solid #eee;
 
-            padding-top: 20px;
-
-            border-top: 2px solid #eee;
-
-            display: flex;
-
-            justify-content: space-between;
-
-            font-size: 21px;
+            font-size: 1.3rem;
 
             font-weight: bold;
 
             color: #a90016;
         }
 
-
-        /* =========================
-           FORMULÁRIO
-        ========================= */
-
-        .formulario {
-
-            margin-top: 25px;
+        .dados-pedido {
+            padding: 0 20px 20px;
         }
 
-
-        .formulario label {
-
-            display: block;
-
-            margin-bottom: 7px;
-
-            font-weight: bold;
-
-            color: #444;
-        }
-
-
-        .formulario input,
-        .formulario textarea {
-
+        .dados-pedido input,
+        .dados-pedido textarea {
             width: 100%;
 
             padding: 12px;
 
-            margin-bottom: 15px;
+            margin-bottom: 10px;
 
             border: 1px solid #ddd;
 
-            border-radius: 10px;
+            border-radius: 8px;
 
             outline: none;
 
-            font-size: 15px;
+            font-size: 14px;
         }
 
-
-        .formulario input:focus,
-        .formulario textarea:focus {
-
+        .dados-pedido input:focus,
+        .dados-pedido textarea:focus {
             border-color: #a90016;
         }
 
+        .dados-pedido textarea {
+            height: 80px;
 
-        .formulario textarea {
-
-            resize: vertical;
-
-            min-height: 80px;
+            resize: none;
         }
 
-
-        /* =========================
-           WHATSAPP
-        ========================= */
-
-        .btn-whatsapp {
-
+        .finalizar {
             width: 100%;
 
-            padding: 15px;
-
-            margin-top: 10px;
+            padding: 14px;
 
             border: none;
 
-            border-radius: 12px;
+            border-radius: 10px;
 
-            background: #25D366;
+            background: #a90016;
 
             color: white;
 
-            font-size: 17px;
-
             font-weight: bold;
+
+            font-size: 1rem;
 
             cursor: pointer;
 
             transition: 0.3s;
         }
 
-
-        .btn-whatsapp:hover {
-
-            filter: brightness(0.9);
+        .finalizar:hover {
+            background: #7f0000;
         }
 
-
         /* =========================
-           CARRINHO VAZIO
+           VAZIO
         ========================= */
 
-        .vazio {
+        .carrinho-vazio {
+            text-align: center;
+
+            color: #888;
+
+            padding: 50px 10px;
+        }
+
+        /* =========================
+           RODAPÉ
+        ========================= */
+
+        footer {
+            background: #7f0000;
+
+            color: white;
 
             text-align: center;
 
-            color: #777;
-
-            padding: 40px 10px;
+            padding: 25px;
         }
-
-
-        /* =========================
-           CONTATO
-        ========================= */
-
-        #contato {
-
-            margin-top: 40px;
-        }
-
 
         /* =========================
            RESPONSIVO
@@ -779,46 +714,52 @@
         @media (max-width: 700px) {
 
             .hero {
-
-                height: 430px;
+                height: 400px;
             }
-
 
             .hero h1 {
-
-                font-size: 43px;
+                font-size: 2.7rem;
             }
-
 
             .hero p {
-
-                font-size: 17px;
+                font-size: 1rem;
             }
 
-
-            .card {
-
-                padding: 30px 20px;
+            .cards {
+                grid-template-columns: 1fr;
             }
 
+            .carrinho {
+                width: 100%;
+                max-width: 100%;
+                right: -100%;
+            }
 
-            .carrinho-fixo {
+            .categoria {
+                font-size: 1.5rem;
+            }
 
-                right: 15px;
-
-                bottom: 15px;
-
-                padding: 13px 18px;
+            .sobre,
+            .cardapio,
+            .contato {
+                padding-left: 10px;
+                padding-right: 10px;
             }
 
         }
 
     </style>
-
 </head>
 
-
 <body>
+
+    <!-- =========================
+         BOTÃO MENU
+    ========================= -->
+
+    <button class="menu-btn" onclick="abrirMenu()">
+        ☰
+    </button>
 
 
     <!-- =========================
@@ -827,342 +768,479 @@
 
     <div class="menu" id="menu">
 
-        <button
-            class="fechar"
-            onclick="fecharMenu()">
+        <h2>🍴 Cozinha da Deia</h2>
 
-            ✕
+        <a href="#inicio" onclick="fecharMenu()">🏠 Início</a>
 
-        </button>
+        <a href="#cardapio" onclick="fecharMenu()">📋 Cardápio</a>
 
-        <a
-            href="#inicio"
-            onclick="fecharMenu()">
+        <a href="#sobre" onclick="fecharMenu()">❤️ Sobre nós</a>
 
-             Início
-
-        </a>
-
-
-        <a
-            href="#cardapio"
-            onclick="fecharMenu()">
-
-             Cardápio
-
-        </a>
-
-
-        <a
-            href="#sobre"
-            onclick="fecharMenu()">
-
-             Sobre nós
-
-        </a>
-
-
-        <a
-            href="#contato"
-            onclick="fecharMenu()">
-
-             Contato
-
-        </a>
+        <a href="#contato" onclick="fecharMenu()">📱 Contato</a>
 
     </div>
 
-
-    <!-- =========================
-         OVERLAY
-    ========================= -->
-
-    <div
-        class="overlay"
-        id="overlay"
-        onclick="fecharMenu()">
-    </div>
-
+    <div class="overlay" id="overlay" onclick="fecharMenu()"></div>
 
 
     <!-- =========================
          HERO
     ========================= -->
 
-    <header
-        class="hero"
-        id="inicio">
-
-
-        <button
-            class="menu-btn"
-            onclick="abrirMenu()">
-
-            ☰
-
-        </button>
-
+    <section class="hero" id="inicio">
 
         <div class="hero-content">
 
-            <h1>
-                Cozinha da Deia
-            </h1>
+            <h1>Cozinha da Deia</h1>
 
+            <p>Sabor caseiro feito com carinho.</p>
 
-            <p>
-                Sabor caseiro feito com carinho. 
-            </p>
-
-
-            <p>
+            <p class="subtitulo">
                 Comida gostosa para deixar seu dia ainda melhor.
             </p>
 
         </div>
 
-    </header>
-
+    </section>
 
 
     <!-- =========================
-         CONTEÚDO
+         SOBRE
     ========================= -->
 
-    <main class="conteudo">
+    <section class="sobre" id="sobre">
 
+        <div class="container">
 
-        <!-- =========================
-             SOBRE
-        ========================= -->
-
-        <section
-            class="card"
-            id="sobre">
-
-            <h2>
-                Bem-vindo à Cozinha da Deia ❤️
-            </h2>
-
+            <h2>Bem-vindo à Cozinha da Deia ❤️</h2>
 
             <p>
-                Aqui você encontra comidas preparadas
-                com muito carinho, sabor e aquele
-                gostinho especial de comida caseira.
+                Aqui você encontra comida gostosa, preparada com carinho
+                e aquele sabor caseiro que dá vontade de repetir!
+                Escolha seu lanche, monte seu pedido e envie diretamente
+                para a gente pelo WhatsApp.
             </p>
 
-        </section>
+        </div>
+
+    </section>
 
 
+    <!-- =========================
+         CARDÁPIO
+    ========================= -->
 
-        <!-- =========================
-             CARDÁPIO
-        ========================= -->
+    <section class="cardapio" id="cardapio">
 
-        <section
-            class="card"
-            id="cardapio">
+        <div class="container">
 
-            <h2>
-                Nosso Cardápio
+            <h2 class="titulo-secao">
+                Nosso Cardápio 🍴
             </h2>
 
-
-            <p>
-                Escolha seus pratos favoritos e
-                adicione ao seu pedido.
+            <p class="subtitulo-secao">
+                Escolha seu lanche e adicione ao pedido!
             </p>
 
 
-            <div class="cardapio-grid">
+            <!-- =========================
+                 LANCHES DE LINGUIÇA
+            ========================= -->
+
+            <h3 class="categoria">
+                🌭 Lanches de Linguiça
+            </h3>
+
+            <div class="cards">
 
 
-                <!-- PRODUTO 1 -->
+                <!-- LINGUIÇA TRADICIONAL -->
 
-                <div class="produto">
-
-                    <div class="emoji">
-                        🍔
-                    </div>
-
+                <div class="card">
 
                     <h3>
-                        Lanches de linguiça 
+                        Lanche de Linguiça Tradicional
                     </h3>
 
-
                     <p>
-                        Tradicional (Linguiça e vinagrete)
+                        Linguiça + vinagrete.
                     </p>
 
-
-                    <span class="preco">
+                    <div class="preco">
                         R$ 20,00
-                    </span>
-
+                    </div>
 
                     <button
-                        class="btn-adicionar"
+                        class="btn-pedir"
                         onclick="adicionarPedido(
-                            'Lanche de linguiça',
+                            'Lanche de Linguiça Tradicional',
                             20
-                        )">
-
-                        + Adicionar ao pedido
-
+                        )"
+                    >
+                        🛒 Adicionar ao pedido
                     </button>
 
                 </div>
 
 
+                <!-- LINGUIÇA SALADA -->
 
-                <!-- PRODUTO 2 -->
+                <div class="card">
 
-                <div class="produto">
+                    <h3>
+                        Lanche de Linguiça Salada
+                    </h3>
 
-                    <div class="emoji">
-                        🍱
+                    <p>
+                        Linguiça + vinagrete + alface ou rúcula.
+                    </p>
+
+                    <div class="preco">
+                        R$ 22,00
                     </div>
 
+                    <button
+                        class="btn-pedir"
+                        onclick="adicionarPedido(
+                            'Lanche de Linguiça Salada',
+                            22
+                        )"
+                    >
+                        🛒 Adicionar ao pedido
+                    </button>
+
+                </div>
+
+
+                <!-- LINGUIÇA QUEIJO -->
+
+                <div class="card">
+
+                    <h3>
+                        Lanche de Linguiça com Queijo
+                    </h3>
+
+                    <p>
+                        Linguiça + vinagrete + alface ou rúcula + queijo.
+                    </p>
+
+                    <div class="preco">
+                        R$ 26,00
+                    </div>
+
+                    <button
+                        class="btn-pedir"
+                        onclick="adicionarPedido(
+                            'Lanche de Linguiça com Queijo',
+                            26
+                        )"
+                    >
+                        🛒 Adicionar ao pedido
+                    </button>
+
+                </div>
+
+
+                <!-- LINGUIÇA COMPLETO -->
+
+                <div class="card">
+
+                    <h3>
+                        Lanche de Linguiça Completo
+                    </h3>
+
+                    <p>
+                        Linguiça + vinagrete + alface ou rúcula +
+                        queijo + bacon + cheddar.
+                    </p>
+
+                    <div class="preco">
+                        R$ 30,00
+                    </div>
+
+                    <button
+                        class="btn-pedir"
+                        onclick="adicionarPedido(
+                            'Lanche de Linguiça Completo',
+                            30
+                        )"
+                    >
+                        🛒 Adicionar ao pedido
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 LANCHES DE PERNIL
+            ========================= -->
+
+            <h3 class="categoria">
+                🥖 Lanches de Pernil
+            </h3>
+
+            <div class="cards">
+
+
+                <!-- PERNIL TRADICIONAL -->
+
+                <div class="card">
+
+                    <h3>
+                        Lanche de Pernil Tradicional
+                    </h3>
+
+                    <p>
+                        Pernil + vinagrete.
+                    </p>
+
+                    <div class="preco">
+                        R$ 20,00
+                    </div>
+
+                    <button
+                        class="btn-pedir"
+                        onclick="adicionarPedido(
+                            'Lanche de Pernil Tradicional',
+                            20
+                        )"
+                    >
+                        🛒 Adicionar ao pedido
+                    </button>
+
+                </div>
+
+
+                <!-- PERNIL SALADA -->
+
+                <div class="card">
+
+                    <h3>
+                        Lanche de Pernil Salada
+                    </h3>
+
+                    <p>
+                        Pernil + vinagrete + alface ou rúcula.
+                    </p>
+
+                    <div class="preco">
+                        R$ 22,00
+                    </div>
+
+                    <button
+                        class="btn-pedir"
+                        onclick="adicionarPedido(
+                            'Lanche de Pernil Salada',
+                            22
+                        )"
+                    >
+                        🛒 Adicionar ao pedido
+                    </button>
+
+                </div>
+
+
+                <!-- PERNIL QUEIJO -->
+
+                <div class="card">
+
+                    <h3>
+                        Lanche de Pernil com Queijo
+                    </h3>
+
+                    <p>
+                        Pernil + vinagrete + alface ou rúcula + queijo.
+                    </p>
+
+                    <div class="preco">
+                        R$ 26,00
+                    </div>
+
+                    <button
+                        class="btn-pedir"
+                        onclick="adicionarPedido(
+                            'Lanche de Pernil com Queijo',
+                            26
+                        )"
+                    >
+                        🛒 Adicionar ao pedido
+                    </button>
+
+                </div>
+
+
+                <!-- PERNIL COMPLETO -->
+
+                <div class="card">
+
+                    <h3>
+                        Lanche de Pernil Completo
+                    </h3>
+
+                    <p>
+                        Pernil + vinagrete + alface ou rúcula +
+                        queijo + bacon + cheddar.
+                    </p>
+
+                    <div class="preco">
+                        R$ 30,00
+                    </div>
+
+                    <button
+                        class="btn-pedir"
+                        onclick="adicionarPedido(
+                            'Lanche de Pernil Completo',
+                            30
+                        )"
+                    >
+                        🛒 Adicionar ao pedido
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 OUTROS
+            ========================= -->
+
+            <h3 class="categoria">
+                🍽️ Outros
+            </h3>
+
+            <div class="cards">
+
+
+                <!-- MARMITA -->
+
+                <div class="card">
 
                     <h3>
                         Marmita
                     </h3>
 
-
                     <p>
-                        Comida fresquinha e preparada
-                        com carinho.
+                        Uma deliciosa refeição caseira preparada
+                        com muito carinho.
                     </p>
 
-
-                    <span class="preco">
+                    <div class="preco">
                         R$ 18,00
-                    </span>
-
+                    </div>
 
                     <button
-                        class="btn-adicionar"
+                        class="btn-pedir"
                         onclick="adicionarPedido(
                             'Marmita',
                             18
-                        )">
-
-                        + Adicionar ao pedido
-
+                        )"
+                    >
+                        🛒 Adicionar ao pedido
                     </button>
 
                 </div>
 
 
+                <!-- SOBREMESA -->
 
-                <!-- PRODUTO 3 -->
-
-                <div class="produto">
-
-                    <div class="emoji">
-                        🍰
-                    </div>
-
+                <div class="card">
 
                     <h3>
                         Sobremesa
                     </h3>
 
-
                     <p>
-                        Uma sobremesa deliciosa para
-                        completar sua refeição.
+                        Uma sobremesa deliciosa para finalizar
+                        sua refeição.
                     </p>
 
-
-                    <span class="preco">
+                    <div class="preco">
                         R$ 8,00
-                    </span>
-
+                    </div>
 
                     <button
-                        class="btn-adicionar"
+                        class="btn-pedir"
                         onclick="adicionarPedido(
                             'Sobremesa',
                             8
-                        )">
-
-                        + Adicionar ao pedido
-
+                        )"
+                    >
+                        🛒 Adicionar ao pedido
                     </button>
 
                 </div>
 
 
+                <!-- ESPECIAL -->
 
-                <!-- PRODUTO 4 -->
-
-                <div class="produto">
-
-                    <div class="emoji">
-                        🍲
-                    </div>
-
+                <div class="card">
 
                     <h3>
                         Especial da Deia
                     </h3>
 
-
                     <p>
-                        Uma opção especial preparada
-                        pela nossa cozinha.
+                        Uma opção especial preparada pela Deia.
                     </p>
 
-
-                    <span class="preco">
+                    <div class="preco">
                         R$ 25,00
-                    </span>
-
+                    </div>
 
                     <button
-                        class="btn-adicionar"
+                        class="btn-pedir"
                         onclick="adicionarPedido(
                             'Especial da Deia',
                             25
-                        )">
-
-                        + Adicionar ao pedido
-
+                        )"
+                    >
+                        🛒 Adicionar ao pedido
                     </button>
 
                 </div>
 
-
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
+    <!-- =========================
+         CONTATO
+    ========================= -->
 
-        <!-- =========================
-             CONTATO
-        ========================= -->
+    <section class="contato" id="contato">
 
-        <section
-            class="card"
-            id="contato">
+        <div class="container">
 
             <h2>
-                📞 Entre em contato
+                Faça seu pedido ❤️
             </h2>
 
-
             <p>
-                Faça seu pedido e venha experimentar
-                os sabores da Cozinha da Deia!
+                Escolha seus produtos no cardápio e envie seu pedido
+                diretamente pelo WhatsApp.
             </p>
 
-        </section>
+            <p>
+                📱 (19) 99282-7251
+            </p>
 
-    </main>
+            <a
+                class="whatsapp-contato"
+                href="https://wa.me/5519992817251"
+                target="_blank"
+            >
+                💬 Falar pelo WhatsApp
+            </a>
 
+        </div>
+
+    </section>
 
 
     <!-- =========================
@@ -1170,121 +1248,95 @@
     ========================= -->
 
     <button
-        class="carrinho-fixo"
-        onclick="abrirCarrinho()">
-
+        class="carrinho-btn"
+        onclick="abrirCarrinho()"
+    >
         🛒 Pedido
         (<span id="quantidadeTotal">0</span>)
-
     </button>
-
 
 
     <!-- =========================
          CARRINHO
     ========================= -->
 
-    <div
-        class="carrinho"
-        id="carrinho">
+    <div class="carrinho" id="carrinho">
 
 
-        <div class="carrinho-topo">
+        <div class="carrinho-header">
 
             <h2>
-                🛒 Seu Pedido
+                🛒 Meu Pedido
             </h2>
-
 
             <button
                 class="fechar-carrinho"
-                onclick="fecharCarrinho()">
-
-                ✕
-
+                onclick="fecharCarrinho()"
+            >
+                ×
             </button>
 
         </div>
 
 
-
-        <!-- LISTA DO PEDIDO -->
-
-        <div id="listaPedido">
-
-            <div class="vazio">
-
-                <p>
-                    Seu pedido está vazio.
-                </p>
-
-                <p style="margin-top:10px;">
-                    Escolha algo delicioso no cardápio! 😋
-                </p>
-
-            </div>
-
+        <div
+            class="itens-carrinho"
+            id="itensCarrinho"
+        >
         </div>
 
-
-
-        <!-- TOTAL -->
 
         <div class="total">
 
-            <span>
-                Total:
-            </span>
-
-
+            Total:
+            R$
             <span id="totalPedido">
-                R$ 0,00
+                0,00
             </span>
 
         </div>
 
 
-
-        <!-- FORMULÁRIO -->
-
-        <div class="formulario">
-
-
-            <label for="nome">
-                Seu nome
-            </label>
-
+        <div class="dados-pedido">
 
             <input
                 type="text"
-                id="nome"
-                placeholder="Digite seu nome">
-
-
-
-            <label for="observacao">
-                Observação
-            </label>
-
+                id="nomeCliente"
+                placeholder="Seu nome"
+            >
 
             <textarea
                 id="observacao"
-                placeholder="Ex: sem cebola, retirar algum ingrediente..."></textarea>
-
-
+                placeholder="Observação do pedido (opcional)"
+            ></textarea>
 
             <button
-                class="btn-whatsapp"
-                onclick="finalizarPedido()">
-
+                class="finalizar"
+                onclick="finalizarPedido()"
+            >
                 📱 Finalizar pedido pelo WhatsApp
-
             </button>
 
         </div>
 
     </div>
 
+
+    <!-- =========================
+         RODAPÉ
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Cozinha da Deia ❤️
+        </p>
+
+        <p>
+            Sabor caseiro feito com carinho.
+        </p>
+
+    </footer>
 
 
     <!-- =========================
@@ -1294,45 +1346,40 @@
     <script>
 
         /* =========================
-           NÚMERO DO WHATSAPP
+           WHATSAPP
         ========================= */
 
         const numeroWhatsApp = "5519992817251";
 
 
         /* =========================
-           CARRINHO
+           PEDIDO
         ========================= */
 
         let pedido = [];
 
 
         /* =========================
-           ADICIONAR PRODUTO
+           ADICIONAR PEDIDO
         ========================= */
 
         function adicionarPedido(nome, preco) {
 
-            const produtoExistente =
-                pedido.find(
-                    item => item.nome === nome
-                );
+            const itemExistente = pedido.find(
+                item => item.nome === nome
+            );
 
 
-            if (produtoExistente) {
+            if (itemExistente) {
 
-                produtoExistente.quantidade++;
+                itemExistente.quantidade++;
 
             } else {
 
                 pedido.push({
-
                     nome: nome,
-
                     preco: preco,
-
                     quantidade: 1
-
                 });
 
             }
@@ -1345,9 +1392,8 @@
         }
 
 
-
         /* =========================
-           AUMENTAR QUANTIDADE
+           AUMENTAR
         ========================= */
 
         function aumentarQuantidade(index) {
@@ -1359,15 +1405,13 @@
         }
 
 
-
         /* =========================
-           DIMINUIR QUANTIDADE
+           DIMINUIR
         ========================= */
 
         function diminuirQuantidade(index) {
 
             pedido[index].quantidade--;
-
 
             if (pedido[index].quantidade <= 0) {
 
@@ -1375,11 +1419,9 @@
 
             }
 
-
             atualizarCarrinho();
 
         }
-
 
 
         /* =========================
@@ -1388,146 +1430,104 @@
 
         function atualizarCarrinho() {
 
-            const lista =
-                document.getElementById(
-                    "listaPedido"
-                );
-
+            const container =
+                document.getElementById("itensCarrinho");
 
             const quantidadeTotal =
-                document.getElementById(
-                    "quantidadeTotal"
-                );
+                document.getElementById("quantidadeTotal");
+
+            const totalPedido =
+                document.getElementById("totalPedido");
 
 
-            const totalElemento =
-                document.getElementById(
-                    "totalPedido"
-                );
+            container.innerHTML = "";
 
-
-            lista.innerHTML = "";
-
-
-            let total = 0;
-
-            let quantidade = 0;
-
-
-            /* CARRINHO VAZIO */
 
             if (pedido.length === 0) {
 
-                lista.innerHTML = `
-
-                    <div class="vazio">
-
-                        <p>
-                            Seu pedido está vazio.
-                        </p>
-
-                        <p style="margin-top:10px;">
-                            Escolha algo delicioso no cardápio! 😋
-                        </p>
-
+                container.innerHTML = `
+                    <div class="carrinho-vazio">
+                        🛒 Seu pedido está vazio.
+                        <br><br>
+                        Escolha alguma coisa deliciosa no cardápio!
                     </div>
-
                 `;
 
             }
 
 
-            /* MOSTRA OS PRODUTOS */
-
-            pedido.forEach(
-                (item, index) => {
+            let quantidade = 0;
+            let total = 0;
 
 
-                    const subtotal =
-                        item.preco *
-                        item.quantidade;
+            pedido.forEach((item, index) => {
+
+                quantidade += item.quantidade;
+
+                total +=
+                    item.preco *
+                    item.quantidade;
 
 
-                    total += subtotal;
+                const div =
+                    document.createElement("div");
+
+                div.className = "item-carrinho";
 
 
-                    quantidade +=
-                        item.quantidade;
+                div.innerHTML = `
+
+                    <div class="item-topo">
+
+                        <span class="item-nome">
+                            ${item.nome}
+                        </span>
+
+                        <span class="item-preco">
+                            R$ ${(item.preco * item.quantidade)
+                                .toFixed(2)
+                                .replace(".", ",")}
+                        </span>
+
+                    </div>
 
 
-                    const div =
-                        document.createElement(
-                            "div"
-                        );
+                    <div class="controles">
+
+                        <button
+                            onclick="diminuirQuantidade(${index})"
+                        >
+                            −
+                        </button>
+
+                        <span class="quantidade">
+                            ${item.quantidade}
+                        </span>
+
+                        <button
+                            onclick="aumentarQuantidade(${index})"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                `;
 
 
-                    div.className =
-                        "item-carrinho";
+                container.appendChild(div);
+
+            });
 
 
-                    div.innerHTML = `
-
-                        <div class="item-info">
-
-                            <strong>
-                                ${item.nome}
-                            </strong>
-
-                            <small>
-                                R$ ${item.preco
-                                    .toFixed(2)
-                                    .replace(".", ",")}
-                                cada
-                            </small>
-
-                        </div>
-
-
-                        <div class="quantidade">
-
-                            <button
-                                onclick="diminuirQuantidade(${index})">
-
-                                −
-
-                            </button>
-
-
-                            <span>
-                                ${item.quantidade}
-                            </span>
-
-
-                            <button
-                                onclick="aumentarQuantidade(${index})">
-
-                                +
-
-                            </button>
-
-                        </div>
-
-                    `;
-
-
-                    lista.appendChild(div);
-
-                }
-            );
-
-
-            quantidadeTotal.innerText =
+            quantidadeTotal.textContent =
                 quantidade;
 
 
-            totalElemento.innerText =
-                "R$ " +
-                total
-                    .toFixed(2)
-                    .replace(".", ",");
+            totalPedido.textContent =
+                total.toFixed(2).replace(".", ",");
 
         }
-
 
 
         /* =========================
@@ -1538,11 +1538,9 @@
 
             document
                 .getElementById("carrinho")
-                .classList
-                .add("ativo");
+                .classList.add("ativo");
 
         }
-
 
 
         /* =========================
@@ -1553,11 +1551,9 @@
 
             document
                 .getElementById("carrinho")
-                .classList
-                .remove("ativo");
+                .classList.remove("ativo");
 
         }
-
 
 
         /* =========================
@@ -1568,17 +1564,14 @@
 
             document
                 .getElementById("menu")
-                .classList
-                .add("ativo");
+                .classList.add("ativo");
 
 
             document
                 .getElementById("overlay")
-                .classList
-                .add("ativo");
+                .classList.add("ativo");
 
         }
-
 
 
         /* =========================
@@ -1589,17 +1582,14 @@
 
             document
                 .getElementById("menu")
-                .classList
-                .remove("ativo");
+                .classList.remove("ativo");
 
 
             document
                 .getElementById("overlay")
-                .classList
-                .remove("ativo");
+                .classList.remove("ativo");
 
         }
-
 
 
         /* =========================
@@ -1608,12 +1598,10 @@
 
         function finalizarPedido() {
 
-            /* VERIFICA SE TEM PRODUTO */
-
             if (pedido.length === 0) {
 
                 alert(
-                    "Adicione pelo menos um produto ao pedido."
+                    "Seu pedido está vazio! Escolha algum produto."
                 );
 
                 return;
@@ -1621,16 +1609,12 @@
             }
 
 
-            /* PEGA O NOME */
-
             const nome =
                 document
-                    .getElementById("nome")
+                    .getElementById("nomeCliente")
                     .value
                     .trim();
 
-
-            /* PEGA A OBSERVAÇÃO */
 
             const observacao =
                 document
@@ -1639,43 +1623,39 @@
                     .trim();
 
 
-            /* VERIFICA O NOME */
-
             if (nome === "") {
 
                 alert(
-                    "Digite seu nome antes de finalizar o pedido."
+                    "Por favor, coloque seu nome antes de finalizar o pedido."
                 );
+
+                document
+                    .getElementById("nomeCliente")
+                    .focus();
 
                 return;
 
             }
 
 
-            /* =========================
-               MONTA A MENSAGEM
-            ========================= */
+            let total = 0;
+
 
             let mensagem =
-                "🍴 *PEDIDO - COZINHA DA DEIA*%0A%0A";
+                "🍴 *PEDIDO - COZINHA DA DEIA*\n\n";
 
 
             mensagem +=
                 "👤 *Nome:* " +
                 nome +
-                "%0A%0A";
+                "\n\n";
 
 
             mensagem +=
-                "🛒 *Itens do pedido:*%0A";
+                "🛍️ *Itens do pedido:*\n";
 
 
-            /* TOTAL */
-
-            let total = 0;
-
-
-            pedido.forEach(function(item) {
+            pedido.forEach(item => {
 
                 const subtotal =
                     item.preco *
@@ -1687,53 +1667,45 @@
 
                 mensagem +=
                     "• " +
-                    item.quantidade +
-                    "x " +
                     item.nome +
+                    " x" +
+                    item.quantidade +
                     " - R$ " +
                     subtotal
                         .toFixed(2)
                         .replace(".", ",") +
-                    "%0A";
+                    "\n";
 
             });
 
 
-            /* TOTAL FINAL */
-
             mensagem +=
-                "%0A💰 *TOTAL: R$ " +
+                "\n💰 *TOTAL: R$ " +
                 total
                     .toFixed(2)
                     .replace(".", ",") +
                 "*";
 
 
-            /* OBSERVAÇÃO */
-
             if (observacao !== "") {
 
                 mensagem +=
-                    "%0A%0A📝 *Observação:*%0A" +
+                    "\n\n📝 *Observação:*\n" +
                     observacao;
 
             }
 
 
-            /* =========================
-               LINK DO WHATSAPP
-            ========================= */
+            mensagem +=
+                "\n\n❤️ Pedido feito pelo site da Cozinha da Deia.";
+
 
             const url =
                 "https://wa.me/" +
                 numeroWhatsApp +
                 "?text=" +
-                mensagem;
+                encodeURIComponent(mensagem);
 
-
-            /* =========================
-               ABRIR WHATSAPP
-            ========================= */
 
             window.open(
                 url,
@@ -1742,10 +1714,15 @@
 
         }
 
-    </script>
 
+        /* =========================
+           INICIAR CARRINHO
+        ========================= */
+
+        atualizarCarrinho();
+
+    </script>
 
 </body>
 
 </html>
-```
