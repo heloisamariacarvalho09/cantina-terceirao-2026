@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -51,15 +52,11 @@
         header::before {
             content: "";
             position: absolute;
-
             width: 80%;
             height: 180px;
-
             top: -80px;
             left: -10%;
-
             background: rgba(255, 255, 255, 0.08);
-
             border-radius: 50%;
             transform: rotate(15deg);
         }
@@ -67,15 +64,11 @@
         header::after {
             content: "";
             position: absolute;
-
             width: 90%;
             height: 180px;
-
             bottom: -130px;
             right: -15%;
-
             background: rgba(255, 255, 255, 0.08);
-
             border-radius: 50%;
         }
 
@@ -166,6 +159,8 @@
             box-shadow: 5px 0 20px rgba(0, 0, 0, 0.2);
 
             transition: 0.3s;
+
+            overflow-y: auto;
         }
 
         .menu.ativo {
@@ -197,6 +192,46 @@
             color: #a90016;
         }
 
+        /* =========================
+           INFORMAÇÕES DO MENU
+        ========================= */
+
+        .menu-info {
+            display: block;
+
+            color: #333;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+            margin-bottom: 8px;
+
+            background: #fff8f8;
+
+            border: 1px solid #f1dada;
+        }
+
+        .menu-info strong {
+            display: block;
+
+            color: #a90016;
+
+            margin-bottom: 6px;
+
+            font-size: 1rem;
+        }
+
+        .menu-info span {
+            display: block;
+
+            color: #555;
+
+            line-height: 1.4;
+
+            word-break: break-word;
+        }
+
         .overlay {
             display: none;
 
@@ -226,11 +261,38 @@
             padding: 70px 0;
         }
 
+        /* =========================
+           TÍTULO PRINCIPAL
+        ========================= */
+
         .titulo {
             text-align: center;
+
             color: #a90016;
-            font-size: 2.5rem;
-            margin-bottom: 45px;
+
+            font-size: 2.2rem;
+
+            margin-bottom: 40px;
+        }
+
+        /* =========================
+           TÍTULOS DAS CATEGORIAS
+        ========================= */
+
+        .titulo-categoria {
+            text-align: left;
+
+            color: #a90016;
+
+            font-size: 1.5rem;
+
+            margin-bottom: 20px;
+
+            font-weight: bold;
+        }
+
+        .marmitas-titulo {
+            margin-top: 65px;
         }
 
         /* =========================
@@ -252,8 +314,6 @@
             gap: 25px;
         }
 
-        /* TODOS OS CARDS COM A MESMA ESTRUTURA */
-
         .card {
             background: white;
 
@@ -269,7 +329,10 @@
             transition: 0.2s;
 
             display: flex;
+
             flex-direction: column;
+
+            position: relative;
         }
 
         .card:hover {
@@ -278,13 +341,17 @@
 
         .card h3 {
             color: #a90016;
+
             font-size: 1.3rem;
+
             margin-bottom: 10px;
         }
 
         .card p {
             color: #666;
+
             line-height: 1.5;
+
             margin-bottom: 15px;
         }
 
@@ -300,7 +367,9 @@
             margin-bottom: 15px;
         }
 
-        /* BOTÕES TODOS ALINHADOS */
+        /* =========================
+           BOTÃO PEDIDO
+        ========================= */
 
         .btn-pedido {
             width: 100%;
@@ -314,9 +383,11 @@
             border-radius: 10px;
 
             background: #a90016;
+
             color: white;
 
             font-size: 1rem;
+
             font-weight: bold;
 
             cursor: pointer;
@@ -331,16 +402,57 @@
         }
 
         /* =========================
+           PRODUTO INDISPONÍVEL
+        ========================= */
+
+        .card.indisponivel {
+            opacity: 0.65;
+        }
+
+        .card.indisponivel::before {
+            content: "INDISPONÍVEL";
+
+            position: absolute;
+
+            top: 15px;
+            right: 15px;
+
+            background: #777;
+
+            color: white;
+
+            padding: 6px 10px;
+
+            border-radius: 20px;
+
+            font-size: 0.75rem;
+
+            font-weight: bold;
+        }
+
+        .btn-pedido.indisponivel {
+            background: #aaa;
+
+            cursor: not-allowed;
+        }
+
+        .btn-pedido.indisponivel:hover {
+            background: #aaa;
+        }
+
+        /* =========================
            INSTAGRAM
         ========================= */
 
         .contato {
             text-align: center;
+
             background: #fff0f1;
         }
 
         .contato p {
             font-size: 1.2rem;
+
             margin-bottom: 15px;
         }
 
@@ -350,6 +462,7 @@
             text-decoration: none;
 
             background: #a90016;
+
             color: white;
 
             padding: 14px 25px;
@@ -378,6 +491,7 @@
             border: none;
 
             background: #a90016;
+
             color: white;
 
             padding: 16px 22px;
@@ -385,6 +499,7 @@
             border-radius: 50px;
 
             font-size: 1rem;
+
             font-weight: bold;
 
             cursor: pointer;
@@ -402,6 +517,7 @@
             right: -420px;
 
             width: 400px;
+
             max-width: 95%;
 
             height: 100vh;
@@ -428,6 +544,7 @@
             display: flex;
 
             justify-content: space-between;
+
             align-items: center;
 
             margin-bottom: 25px;
@@ -445,6 +562,7 @@
             color: #a90016;
 
             width: 40px;
+
             height: 40px;
 
             border-radius: 50%;
@@ -462,6 +580,7 @@
 
         .item-carrinho h3 {
             font-size: 1rem;
+
             margin-bottom: 8px;
         }
 
@@ -469,6 +588,7 @@
             display: flex;
 
             align-items: center;
+
             justify-content: space-between;
         }
 
@@ -482,6 +602,7 @@
 
         .quantidade button {
             width: 30px;
+
             height: 30px;
 
             border: none;
@@ -536,6 +657,7 @@
 
         .campo textarea {
             min-height: 80px;
+
             resize: vertical;
         }
 
@@ -593,11 +715,13 @@
             position: fixed;
 
             bottom: 90px;
+
             left: 50%;
 
             transform: translateX(-50%);
 
             background: #333;
+
             color: white;
 
             padding: 13px 20px;
@@ -649,16 +773,24 @@
                 font-size: 2rem;
             }
 
+            .titulo-categoria {
+                font-size: 1.3rem;
+            }
+
             .carrinho {
                 width: 100%;
+
                 max-width: 100%;
             }
 
         }
+
     </style>
+
 </head>
 
 <body>
+
 
     <!-- =========================
          BOTÃO MENU
@@ -686,37 +818,66 @@
         aria-label="Menu principal">
 
         <h2>
-            Cozinha da Deia ❤️
+            Dados
         </h2>
+
 
         <a
             href="#inicio"
             onclick="fecharMenu()">
 
-            🏠 Início
+            Início
 
         </a>
+
 
         <a
             href="#cardapio"
             onclick="fecharMenu()">
 
-            📋 Cardápio
+            Cardápio
 
         </a>
+
 
         <a
             href="https://www.instagram.com/cozinha.deia/"
             target="_blank"
             rel="noopener noreferrer">
 
-            📸 Instagram
+            Instagram
 
             <span class="sr-only">
                 (abre em nova aba)
             </span>
 
         </a>
+
+
+        <div class="menu-info">
+
+            <strong>
+                Endereço
+            </strong>
+
+            <span>
+                Rua dos Estados, 162 - Presidente Medici
+            </span>
+
+        </div>
+
+
+        <div class="menu-info">
+
+            <strong>
+                Pix
+            </strong>
+
+            <span>
+                158-494-528-18
+            </span>
+
+        </div>
 
     </nav>
 
@@ -765,6 +926,9 @@
 
         <div class="container">
 
+
+            <!-- TÍTULO PRINCIPAL -->
+
             <h2
                 class="titulo"
                 id="titulo-cardapio">
@@ -773,9 +937,39 @@
 
             </h2>
 
+
+            <!-- =========================
+                 LANCHES
+            ========================= -->
+
+            <h3 class="titulo-categoria">
+
+                Lanches
+
+            </h3>
+
+
             <div
                 class="cards"
-                id="listaProdutos">
+                id="listaLanches">
+            </div>
+
+
+            <!-- =========================
+                 MARMITAS
+            ========================= -->
+
+            <h3
+                class="titulo-categoria marmitas-titulo">
+
+                Marmitas
+
+            </h3>
+
+
+            <div
+                class="cards"
+                id="listaMarmitas">
             </div>
 
         </div>
@@ -914,7 +1108,7 @@
 
             <textarea
                 id="observacao"
-                placeholder="Ex.: sem cebola, ponto da carne..."
+                placeholder="Ex.: sem cebola, sem vinagrete..."
                 aria-describedby="ajuda-observacao"></textarea>
 
             <span
@@ -967,13 +1161,14 @@
     <footer>
 
         <p>
-            Obrigada pela preferência! ❤️
+            Obrigada pela preferência!
         </p>
 
     </footer>
 
 
     <script>
+
 
         /* =========================
            NÚMERO DO WHATSAPP
@@ -985,92 +1180,128 @@
 
         /* =========================
            PRODUTOS
+           
+           true  = disponível
+           false = indisponível
         ========================= */
 
         const produtos = [
 
+            /* =========================
+               LANCHES
+            ========================= */
+
             {
                 id: 1,
+                categoria: "lanches",
                 nome: "Linguiça Tradicional",
                 descricao: "Linguiça e Vinagrete",
-                preco: 20
+                preco: 20,
+                disponivel: true
             },
 
             {
                 id: 2,
+                categoria: "lanches",
                 nome: "Linguiça Salada",
                 descricao: "Linguiça, Vinagrete, Rúcula ou Alface",
-                preco: 22
+                preco: 22,
+                disponivel: true
             },
 
             {
                 id: 3,
+                categoria: "lanches",
                 nome: "Linguiça Queijo",
                 descricao: "Linguiça, Vinagrete, Rúcula ou Alface e Queijo",
-                preco: 26
+                preco: 26,
+                disponivel: true
             },
 
             {
                 id: 4,
+                categoria: "lanches",
                 nome: "Linguiça Completo",
                 descricao: "Linguiça, Vinagrete, Rúcula ou Alface, Queijo, Bacon e Cheddar",
-                preco: 30
+                preco: 30,
+                disponivel: true
             },
 
             {
                 id: 5,
+                categoria: "lanches",
                 nome: "Pernil Tradicional",
                 descricao: "Pernil e Vinagrete",
-                preco: 20
+                preco: 20,
+                disponivel: true
             },
 
             {
                 id: 6,
+                categoria: "lanches",
                 nome: "Pernil Salada",
                 descricao: "Pernil, Vinagrete, Rúcula ou Alface",
-                preco: 22
+                preco: 22,
+                disponivel: true
             },
 
             {
                 id: 7,
+                categoria: "lanches",
                 nome: "Pernil Queijo",
                 descricao: "Pernil, Vinagrete, Rúcula ou Alface e Queijo",
-                preco: 26
+                preco: 26,
+                disponivel: true
             },
 
             {
                 id: 8,
+                categoria: "lanches",
                 nome: "Pernil Completo",
                 descricao: "Pernil, Vinagrete, Rúcula ou Alface, Queijo, Bacon e Cheddar",
-                preco: 30
+                preco: 30,
+                disponivel: true
             },
+
+
+            /* =========================
+               MARMITAS
+            ========================= */
 
             {
                 id: 9,
+                categoria: "marmitas",
                 nome: "Marmita de Moela",
                 descricao: "500g",
-                preco: 30
+                preco: 30,
+                disponivel: true
             },
 
             {
                 id: 10,
+                categoria: "marmitas",
                 nome: "Marmita de Sarapatel",
                 descricao: "500g",
-                preco: 25
+                preco: 25,
+                disponivel: true
             },
 
             {
                 id: 11,
+                categoria: "marmitas",
                 nome: "Marmita de Dobradinha",
-                descricao: "600g de dobradinha + 300g de arroz",
-                preco: 30
+                descricao: "600g de dobradinha + 300g de arroz.",
+                preco: 30,
+                disponivel: true
             },
 
             {
                 id: 12,
+                categoria: "marmitas",
                 nome: "Marmita de Baião de dois",
                 descricao: "600g",
-                preco: 30
+                preco: 30,
+                disponivel: true
             }
 
         ];
@@ -1089,19 +1320,75 @@
 
         function mostrarProdutos() {
 
-            const lista =
+            const listaLanches =
                 document.getElementById(
-                    "listaProdutos"
+                    "listaLanches"
                 );
 
-            lista.innerHTML = "";
+            const listaMarmitas =
+                document.getElementById(
+                    "listaMarmitas"
+                );
+
+
+            listaLanches.innerHTML = "";
+
+            listaMarmitas.innerHTML = "";
+
 
             produtos.forEach(produto => {
 
                 const card =
                     document.createElement("div");
 
+
                 card.className = "card";
+
+
+                /* PRODUTO INDISPONÍVEL */
+
+                if (!produto.disponivel) {
+
+                    card.classList.add(
+                        "indisponivel"
+                    );
+
+                }
+
+
+                /* BOTÃO */
+
+                const botao =
+                    produto.disponivel
+
+                        ? `
+
+                            <button
+                                class="btn-pedido"
+                                onclick="adicionarProduto(${produto.id})"
+                                aria-label="Adicionar ${produto.nome} ao pedido">
+
+                                Adicionar ao pedido
+
+                            </button>
+
+                        `
+
+                        : `
+
+                            <button
+                                class="btn-pedido indisponivel"
+                                disabled
+                                aria-label="${produto.nome} indisponível">
+
+                                Indisponível
+
+                            </button>
+
+                        `;
+
+
+                /* CARD */
 
                 card.innerHTML = `
 
@@ -1114,23 +1401,35 @@
                     </p>
 
                     <span class="preco">
+
                         R$ ${produto.preco
                             .toFixed(2)
                             .replace(".", ",")}
+
                     </span>
 
-                    <button
-                        class="btn-pedido"
-                        onclick="adicionarProduto(${produto.id})"
-                        aria-label="Adicionar ${produto.nome} ao pedido">
-
-                        Adicionar ao pedido
-
-                    </button>
+                    ${botao}
 
                 `;
 
-                lista.appendChild(card);
+
+                /* SEPARAR CATEGORIAS */
+
+                if (
+                    produto.categoria === "lanches"
+                ) {
+
+                    listaLanches.appendChild(
+                        card
+                    );
+
+                } else {
+
+                    listaMarmitas.appendChild(
+                        card
+                    );
+
+                }
 
             });
 
@@ -1138,7 +1437,7 @@
 
 
         /* =========================
-           ADICIONAR
+           ADICIONAR PRODUTO
         ========================= */
 
         function adicionarProduto(id) {
@@ -1148,10 +1447,26 @@
                     item => item.id === id
                 );
 
+
+            if (!produto) return;
+
+
+            if (!produto.disponivel) {
+
+                mostrarToast(
+                    "Este produto está indisponível."
+                );
+
+                return;
+
+            }
+
+
             const existente =
                 carrinho.find(
                     item => item.id === id
                 );
+
 
             if (existente) {
 
@@ -1162,15 +1477,20 @@
                 carrinho.push({
 
                     id: produto.id,
+
                     nome: produto.nome,
+
                     preco: produto.preco,
+
                     quantidade: 1
 
                 });
 
             }
 
+
             atualizarCarrinho();
+
 
             mostrarToast(
                 "✅ " +
@@ -1195,9 +1515,12 @@
                     produto => produto.id === id
                 );
 
+
             if (!item) return;
 
+
             item.quantidade += valor;
+
 
             if (item.quantidade <= 0) {
 
@@ -1207,6 +1530,7 @@
                     );
 
             }
+
 
             atualizarCarrinho();
 
@@ -1224,10 +1548,12 @@
                     "itensCarrinho"
                 );
 
+
             const quantidadeTotal =
                 document.getElementById(
                     "quantidadeTotal"
                 );
+
 
             const totalPedido =
                 document.getElementById(
@@ -1240,7 +1566,9 @@
                 container.innerHTML = `
 
                     <p class="vazio">
+
                         Seu pedido está vazio.
+
                     </p>
 
                 `;
@@ -1249,13 +1577,18 @@
 
                 container.innerHTML = "";
 
+
                 carrinho.forEach(item => {
 
                     const div =
-                        document.createElement("div");
+                        document.createElement(
+                            "div"
+                        );
+
 
                     div.className =
                         "item-carrinho";
+
 
                     div.innerHTML = `
 
@@ -1263,13 +1596,17 @@
                             ${item.nome}
                         </h3>
 
+
                         <div class="item-info">
 
                             <strong>
+
                                 R$ ${(item.preco * item.quantidade)
                                     .toFixed(2)
                                     .replace(".", ",")}
+
                             </strong>
+
 
                             <div
                                 class="quantidade"
@@ -1277,19 +1614,23 @@
 
                                 <button
                                     onclick="alterarQuantidade(${item.id}, -1)"
-                                    aria-label="Diminuir quantidade de ${item.nome}">
+                                    aria-label="Diminuir quantidade">
 
                                     −
 
                                 </button>
 
+
                                 <span aria-live="polite">
+
                                     ${item.quantidade}
+
                                 </span>
+
 
                                 <button
                                     onclick="alterarQuantidade(${item.id}, 1)"
-                                    aria-label="Aumentar quantidade de ${item.nome}">
+                                    aria-label="Aumentar quantidade">
 
                                     +
 
@@ -1301,12 +1642,17 @@
 
                     `;
 
-                    container.appendChild(div);
+
+                    container.appendChild(
+                        div
+                    );
 
                 });
 
             }
 
+
+            /* QUANTIDADE */
 
             const quantidade =
                 carrinho.reduce(
@@ -1315,6 +1661,8 @@
                     0
                 );
 
+
+            /* TOTAL */
 
             const total =
                 carrinho.reduce(
@@ -1350,19 +1698,23 @@
                     "carrinho"
                 );
 
+
             const botao =
                 document.querySelector(
                     ".btn-carrinho"
                 );
 
+
             elemento.classList.add(
                 "ativo"
             );
+
 
             elemento.setAttribute(
                 "aria-hidden",
                 "false"
             );
+
 
             botao.setAttribute(
                 "aria-expanded",
@@ -1383,24 +1735,29 @@
                     "carrinho"
                 );
 
+
             const botao =
                 document.querySelector(
                     ".btn-carrinho"
                 );
 
+
             elemento.classList.remove(
                 "ativo"
             );
+
 
             elemento.setAttribute(
                 "aria-hidden",
                 "true"
             );
 
+
             botao.setAttribute(
                 "aria-expanded",
                 "false"
             );
+
 
             botao.focus();
 
@@ -1408,7 +1765,7 @@
 
 
         /* =========================
-           MENU
+           ABRIR MENU
         ========================= */
 
         function abrirMenu() {
@@ -1417,9 +1774,11 @@
                 .getElementById("menu")
                 .classList.add("ativo");
 
+
             document
                 .getElementById("overlay")
                 .classList.add("ativo");
+
 
             document
                 .querySelector(".menu-btn")
@@ -1431,15 +1790,21 @@
         }
 
 
+        /* =========================
+           FECHAR MENU
+        ========================= */
+
         function fecharMenu() {
 
             document
                 .getElementById("menu")
                 .classList.remove("ativo");
 
+
             document
                 .getElementById("overlay")
                 .classList.remove("ativo");
+
 
             document
                 .querySelector(".menu-btn")
@@ -1463,10 +1828,12 @@
 
                     fecharMenu();
 
+
                     const carrinhoElemento =
                         document.getElementById(
                             "carrinho"
                         );
+
 
                     if (
                         carrinhoElemento.classList.contains(
@@ -1495,11 +1862,15 @@
                     "toast"
                 );
 
-            toast.textContent = texto;
+
+            toast.textContent =
+                texto;
+
 
             toast.classList.add(
                 "mostrar"
             );
+
 
             setTimeout(() => {
 
@@ -1553,11 +1924,13 @@
                     "Digite seu nome antes de finalizar o pedido."
                 );
 
+
                 document
                     .getElementById(
                         "nomeCliente"
                     )
                     .focus();
+
 
                 return;
 
@@ -1565,12 +1938,12 @@
 
 
             let mensagem =
-                "🍴 *NOVO PEDIDO - COZINHA DA DEIA*%0A%0A";
+                "*NOVO PEDIDO - COZINHA DA DEIA*%0A%0A";
 
 
             mensagem +=
-                "👤 *Cliente:* " +
-                nome +
+                "*Cliente:* " +
+                encodeURIComponent(nome) +
                 "%0A%0A";
 
 
@@ -1584,11 +1957,14 @@
                     item.preco *
                     item.quantidade;
 
+
                 mensagem +=
                     "• " +
                     item.quantidade +
                     "x " +
-                    item.nome +
+                    encodeURIComponent(
+                        item.nome
+                    ) +
                     " - R$ " +
                     subtotal
                         .toFixed(2)
@@ -1609,7 +1985,7 @@
 
 
             mensagem +=
-                "%0A💰 *Total: R$ " +
+                "%0A*Total: R$ " +
                 total
                     .toFixed(2)
                     .replace(".", ",") +
@@ -1619,14 +1995,16 @@
             if (observacao) {
 
                 mensagem +=
-                    "%0A%0A📝 *Observação:*%0A" +
-                    observacao;
+                    "%0A%0A*Observação:*%0A" +
+                    encodeURIComponent(
+                        observacao
+                    );
 
             }
 
 
             mensagem +=
-                "%0A%0A❤️ Obrigada pelo pedido!";
+                "%0A%0AObrigada pelo pedido!";
 
 
             const url =
@@ -1655,4 +2033,5 @@
     </script>
 
 </body>
+
 </html>
